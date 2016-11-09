@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+*{
+	padding:0;
+	margin:0;
+	box-sizing:border-box;
+	text-decoration:none;
+	list-style:none;
+	font-style:normal;
+	-moz-user-select: none;
+  	-o-user-select:none;
+  	-webkit-user-select:none;
+ 	-ms-user-select:none;
+ 	user-select:none;
+}
+html{
+	
+}
+html,body{
+	height:100%;
+	width:100%;
+	box-sizing:border-box;
+}
+/*清除浮动*/
+.clear:after{
+	content:"";
+	display:block;
+	height:0;
+	overflow:hidden;
+	clear:both;
+}
+
+/*绑卡结果样式*/
+.bigBox{
+	padding:0 0.3rem;
+	.iconBox{
+		text-align:center;
+		padding-top:1.4rem;
+		i{
+			display:inline-block;
+			width:1.68rem;
+			height:1.26rem;
+			background:url("../images/bindSuccessIcon.jpg") no-repeat 100% 100%; 
+		}
+	}
+	.result{
+		padding-top:0.26rem;
+		text-align:center;
+		span{
+			display: block;
+			font-size: 34px;
+		}
+	}
+	.tips{
+		padding-top:0.1rem;
+		text-align:center;
+		font-size:24px;
+		line-height:0.4rem;
+		span{
+
+		}
+
+	}
+	.btn{
+		margin-top:2.06rem;
+
+		button{
+			width:100%;
+			border:0;
+			font-size: 32px;
+			height: 0.9rem;
+			color:#ea5920;
+			border:0.01rem solid #ea5920;
+			background:#ffffff;
+			border-radius:0.1rem;
+			outline: none;
+		}
+	}
+}
