@@ -1,0 +1,216 @@
+@charset "utf-8";
+/*导入公共样式*/
+@import "public";
+
+/*我的卡 样式*/
+.cardList{
+	padding:2rem 1.5rem;
+	
+	.list{
+		margin-bottom:1.5rem;
+		/*显示部分*/
+		.show{
+			display:flex;
+			background:#f0f0f0;
+			border-radius: 0.5rem;
+			.showIcon{
+				width:4%;
+				i{
+					display: inline-block;
+					width:100%;
+					height:100%;
+					background: #666;
+					border-radius: 0.5rem 0 0 0.5rem;
+				}
+				.iconOn{
+					background:#333;
+				}
+			}
+			.showMes{
+				width:98%;
+				padding:1rem 0.5rem;
+				border-radius:0 0.5rem 0.5rem 0;
+				background: #666;
+				.cardId{
+					display: flex;
+					span{
+						width:80%;
+						font-size: 1.6rem;
+						color:#fff;
+					}
+					i{
+						width:20%;
+						font-size: 1.2rem;
+						font-weight: bold;
+						text-align: center;
+					}
+					.mainCard{
+						opacity: 0;
+					}
+				}
+				.cardType{
+					margin-top:1rem;
+					display:flex;
+					font-size: 1.2rem;
+					i{
+						flex:1;
+
+					}
+					.missCard{
+						opacity: 0;
+					}
+					span{
+						flex:1;
+						text-align: right;
+					}
+				}
+				.stateIcon{
+					text-align: center;
+					i{
+						display: inline-block;
+						width: 1rem;
+						height: 1rem;
+						box-sizing:border-box;
+						border-top:0.2rem solid #fff;
+						border-left:0.2rem solid #fff;
+						transform: rotate(-135deg);
+					}
+				}
+			}
+		}
+
+		/*隐藏部分*/
+		.hide{
+			border-radius:0 0 0.5rem 0.5rem;
+			background:#888;
+			padding:1rem 0.5rem;
+			display:none;
+			.balance{
+				display:flex;
+				padding-bottom:0.5rem;
+				border-bottom:0.1rem solid #666;
+				font-size: 1.2rem;
+				.mainCardBalance{
+					flex:1;
+
+				}
+				.cardBalance{
+					flex:1;
+					text-align: right;
+				}
+			}
+
+			.operation{
+				display: flex;
+				text-align: center;
+				padding-top:0.5rem;
+				.unbind{
+					flex:1;
+					border-right:0.1rem solid #666;
+				}
+				.report{
+					flex:1;
+					border-right:0.1rem solid #666;
+				}
+				.reset{
+					flex:1;
+					border-right:0.1rem solid #666;
+				}
+				.setMain{
+					flex:1;
+					span{
+						color:#000;
+					}
+					.mainOn{
+						color:#f0f0f0;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*挂失提示信息*/
+.tipsBox{
+	display:none;
+	.tips{
+		text-align: center;
+		font-size: 1.2rem;
+		i{
+			display: inline-block;
+			width:1rem;
+			height:1rem;
+			text-align: center;
+			line-height: 1rem;
+			border-radius:50%;
+			background:#666;
+			color:#fff;
+			margin-right: 0.2rem;
+		}
+		a{
+			text-decoration: underline;
+		}
+	}
+}
+
+/*绑定新卡*/
+.addCard{
+	background:#777;
+	text-align:center;
+	margin-top:3rem;
+	padding:0.8rem 0;
+	a{
+		font-size: 1.6rem;
+		i{
+			font-size: 2rem;
+			color:#fff;
+			margin-right: 1rem;
+		}
+	}
+	
+}
+
+
+/*弹出提示信息样式*/
+.alertBox{
+	position:absolute;
+	top:0;
+	left:0;
+	height:100%;
+	background:rgba(222,222,222,0.5);
+	font-size: 1.6rem;
+	display:none;
+	padding-left:10%;
+	padding-right:10%;
+  .alertMes{
+  	border-radius:0.5rem 0.5rem 0 0;
+  	margin-top:40%;
+  	background:#fff;
+  	line-height: 2rem;
+    span{
+      	padding:0.5rem;
+
+    }
+    p{
+		padding:0.5rem;
+    }
+  }
+  .alertBtn{
+  		border-radius:0 0 0.5rem 0.5rem;
+  		background:#fff;
+  		display:flex;
+  		text-align: center;
+  		padding:1rem;
+  		i{
+  			flex:1;
+			
+  		}
+  		span{
+  			flex:1;
+			
+  		}
+  }
+}
+.alertBoxOn{
+	display:block;
+}

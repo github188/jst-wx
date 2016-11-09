@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>手机充值</title>
+	<link rel="stylesheet" type="text/css" href="../css/p_re.css">
+</head>
+<body>
+	<header>
+		<div class="act-tips">
+			<ul class="act-lists">
+				
+			</ul>	
+		</div>
+		<div class="buttons">
+			<div class="button btn-on">
+				充话费
+			</div>
+			<div class="button">
+				充流量
+			</div>
+		</div>
+		<div class="phone-num">
+			<div class="item-input bg-gray x-pos">
+				<input class="bg-gray" type="tel" placeholder="请输入手机号码" maxlength="11">
+				<i>X</i>
+			</div>
+			<div class="operator">
+				广东移动
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="p-fareBox">
+	
+				<div class="p-value">
+					30元
+				
+				</div>
+				<div class="p-value">
+					50元
+					
+				</div>
+				<div class="p-value">
+					100元
+					
+				</div>
+				<div class="p-value">
+					200元
+					
+				</div>
+				<div class="p-value">
+					300元
+					
+				</div>
+				<div class="p-value">
+					500元
+					
+				</div>
+			
+		</div>
+
+		<div class="p-fluxBox">
+			<div class="p-fluxTips">全国可用  即时生效  当月有效</div>
+			<div class="list">
+				<ul>
+					<li class="item">
+						<span>20M</span><i>售价：3.00</i>
+					</li>
+					<li class="item">
+						<span>50M</span><i>售价：6.00 </i>
+					</li>
+					<li class="item">
+						<span>100M</span><i>售价：10.00</i>
+					</li>
+					<li class="item">
+						<span>200M</span><i>售价：15.00</i>
+					</li>
+					<li class="item">
+						<span>500M</span><i>售价：30.00</i>
+					</li>
+					<li class="item">
+						<span>1G</span><i>售价：60.00</i>
+					</li>
+				</ul>
+			</div>
+			<div class="yhBox">
+				<ul>
+					<li class="yhList">
+						<div class="yhMes">
+							<span>200M</span>
+							<p>送300M 赠送于1天内到账</p>
+						</div>
+						<div class="yhPriceBox">
+							<div class="price">售价: <span>15.00</span></div>
+							<div class="yhPrice">活动价:<i> 20.00</i></div>
+						</div>
+					</li>
+					<li class="yhList">
+						<div class="yhMes">
+							<span>200M</span>
+							<p>送300M 赠送于1天内到账</p>
+						</div>
+						<div class="yhPriceBox">
+							<div class="price">售价: <span>15.00</span></div>
+							<div class="yhPrice">活动价:<i> 20.00</i></div>
+						</div>
+					</li>
+				</ul>
+				
+			</div>
+
+		</div>
+	</section>
+	<section class="passwordBox">
+		<div class="pwdTips">
+			<i>X</i><span>请输入支付密码</span>
+		</div>
+		<div class="paySum">
+			<i>需付款</i><span>￥100.00</span>
+		</div>
+		<div class="payCard">
+			<div class="cardBox">
+				<i>icon</i><span>捷顺通卡（尾号1234）</span><b></b>
+			</div>
+		</div>
+		<div class="pwdBox">
+			<ul class="listBox">
+				<li class="box">
+					<i></i>
+				</li>
+				<li class="box">
+					<i></i>
+				</li>
+				<li class="box">
+					<i></i>
+				</li>
+				<li class="box">
+					<i></i>
+				</li>
+				<li class="box">
+					<i></i>
+				</li>
+				<li class="box">
+					<i></i>
+				</li>
+			</ul>
+		</div>
+		<div class="keyBox">
+			<input  class="key" type="button" value="1">
+			<input  class="key" type="button" value="2">
+			<input  class="key" type="button" value="3">		
+			<input  class="key" type="button" value="4">
+			<input  class="key" type="button" value="5">
+			<input  class="key" type="button" value="6">		
+			<input  class="key" type="button" value="7">
+			<input  class="key" type="button" value="8">
+			<input  class="key" type="button" value="9">	
+			<input  class="key" type="button" value=" " disabled="disabled">
+			<input  class="key" type="button" value="0">
+			<input  class="key" type="button" value="X">
+		
+		</div>
+	</section> 
+	
+	<div class="alertTipsBox">
+		<div class="alertTips">
+			<span>密码错误</span>
+		</div>
+		<div class="alertBtn">
+			<i>重试</i><span>忘记密码</span>
+		</div>
+	</div>	
+	
+	<div class="cardListBox">
+		<div class="cardTips">
+			<i></i><span>选择支付方式</span>
+		</div>
+		<ul class="cardList"> 
+			
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<script type="text/javascript">
+		Zepto(function($){
+
+			//查询是否有活动
+			$.ajax({
+				url:"/app/rest/phoneList",
+				type:"GET",
+				dataType:"json",
+				success:function(data){
+					if(data.activities.length != 0){
+						$(".act-tips").addClass("act-tipsOn");
+						var actHtml = "";
+						for(var i=0;i<data.activities.length;i++){
+
+						 actHtml += '<li><span>'+data.activities[i].content+'</span><a href="'+data.activities[i].href+'">了解详情</a></li>'
+						}
+						$(".act-lists").html(actHtml);
+						
+					}else{
+						//$(".act-tips").hide();
+					}
+				},
+				error:function(error){
+
+				}
+			})
+
+			//是否缺货、是否有优惠
+			$.ajax({
+				url:"/app/rest/phoneList",
+				type:"GET",
+				dataType:"json",
+				success:function(data){
+					console.log(data);
+					//话费
+					if(data.benefit == "00"){//优惠
+						var spanHtml = "";
+						for(var i=0;i<data.sumList.length;i++){
+							if(data.sumList[i].sellOut == "00"){
+
+								spanHtml = ''+data.sumList[i].yj+'<span>售价：<i>'+data.sumList[i].yhh+'</i></span>'
+							}else{//缺货
+								spanHtml = ''+data.sumList[i].yj+'<span>备货中</span>';
+								$(".p-value").eq(i).addClass("sellOut");
+								$(".item").eq(i).hide();
+							}
+							$(".p-value").eq(i).html(spanHtml);
+						}
+					}
+				},
+				error:function(error){
+					alert("获取数据失败");
+				}
+			})
+
+
+
+			//获取所绑卡的手机号码，归属地
+			var onType = true;//充值额度开关
+			$.ajax({
+				url:"/app/rest/phoneList",
+				type:"GET",
+				dataType:"json",
+				success:function(data){
+					$(".p-value").on("click",fare);
+					$(".list ul").on("click",".item",flux);
+					$(".item-input input").val(data.cardPhone);
+					$(".operator").text(data.operator);
+					$(".item-input i").hide();
+					onType = false;
+				},
+				error:function(error){
+
+				}
+			})
+
+
+			//选择充话费或充流量
+			var flag = 1;//用于判断充话费或充流量；
+			var sum = 0;//用于存放充值的金额
+			$(".buttons").on("click",".button",function(){
+				$(this).addClass("btn-on");
+				$(this).siblings().removeClass("btn-on");
+				$(".item-input i").hide();
+				if($(this).index() == 0){
+					$(".p-fareBox").show();
+					$(".p-fluxBox").hide();
+					flag = 1;
+				}else{
+					$(".p-fareBox").hide();
+					$(".p-fluxBox").show();
+					flag = 0;
+				}
+			})
+
+			//手动输入的手机号码验证
+			//var reg = /^1(3|4|5|7|8)\d{9}$/;
+			$(".item-input input").on("keyup",function(){
+				var num = "";//用于存放手机不合法的状态
+				if(/^[0-9]*$/.test($(".item-input input").val())){
+					if($(this).val().length==11){
+						$(".item-input input").blur();
+					}else{
+						$(".item-input input").focus();
+					}
+				}else{
+					var str = $(".item-input input").val();
+					str = str.substring(0,str.length-1);
+					$(".item-input input").val(str);
+				}
+			})
+
+			//电话号码不足11位不会失去焦点
+			$(".item-input input").blur(function(){
+				if($(this).val().length<11){
+					$(".item-input input").focus();
+				}else{
+					$.ajax({
+						url:"http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel="+$(this).val(),
+						type:"GET",
+						dataType:"jsonp",
+						success:function(data){
+							console.log(data)
+							num = data.carrier
+							if(data.carrier != null){//合法
+								$(".operator").text(data.carrier);
+								$(".item-input i").hide();
+								$(".p-value").removeClass("illegalOn");
+								$(".item").removeClass("listOff");
+								$(".item").find("i").removeClass("iOff");
+								if(!onType){
+									
+								}else{
+									$(".p-value").on("click",fare);
+									$(".list ul").on("click",".item",flux);	
+									onType = false;
+								}
+								
+							}else{//不合法
+								$(".operator").text("暂不支持此号码充值");
+								$(".item-input i").show();
+								$(".p-value").addClass("illegalOn");
+								$(".item").addClass("listOff");
+								$(".item").find("i").addClass("iOff");
+								onType = true;
+								//手机号码不合法时，充值额度不可选
+								$(".p-value").off("click",fare);
+								$(".list ul").off("click",".item",flux);
+							}							
+						},
+						error:function(error){
+							alert("系统异常")
+						}
+					})
+				}
+				
+			})
+
+			//获取焦点时显示清空按钮
+			$(".item-input input").focus(function(event) {
+				$(".item-input i").show();
+			});
+
+			//清空输入的号码按钮事件
+			$(".item-input i").on("click",function(){
+				$(".item-input input").val("");
+
+			})
+
+			//选取充值金额
+			function fare(){
+				if($(this).hasClass("sellOut")){
+					console.log("www")
+				}else{
+					console.log($(this).text());
+					$(".passwordBox").addClass("passwordBoxOn");
+				}
+				
+			}
+		
+			//选取充值流量	
+			function flux(){
+				console.log("成功充值"+$(this).text());
+				$(".passwordBox").addClass("passwordBoxOn");
+			}
+
+			//密码输入
+			var keyVal = "";//用于记录前6点击的数字
+			var count = 0;//用于记录小黑点显示
+			$(".keyBox").on("click",".key",function(){
+			  if($(this).index() == 11){
+			    $(".box").eq(keyVal.length-1).find("i").removeClass("keyOn");       
+			    keyVal = keyVal.substring(0,keyVal.length-1);
+			    count--;
+			    if(count < 0){
+			      count = 0;
+			    }                 
+			  }else if($(this).index()==9){
+			    keyVal = keyVal;
+			  }else{  
+			    keyVal += $(this).val();
+			    $(".box").eq(count).find("i").addClass("keyOn");
+			    if(keyVal.length > 6){
+			      keyVal = $(this).val();
+			      count = 0;                      
+			      
+			    }else if(keyVal.length==6){
+			    	$.ajax({
+			    		url:"/app/rest/phoneList",
+			    		type:"GET",
+			    		dataType:"josn",
+			    		// data:{},
+			    		success:function(data){
+			    			//console.log(data)
+			    			if(JSON.parse(data).password == keyVal){
+			    				alert("充值成功");
+			    				$(".passwordBox").removeClass("passwordBoxOn");
+			    			}else{
+			    				console.log("密码错误");
+			    				$(".alertTipsBox").addClass("alertTipsBoxOn");
+			    				$(".passwordBox").removeClass("passwordBoxOn");
+			    			}
+			    		},
+			    		error:function(error){
+			    			alert("服务未开启")
+			    		}
+			    	})
+
+
+				    for(var i=0;i<6;i++){
+				        $(".box").eq(i).find("i").removeClass("keyOn");
+				    }
+				    count = -1;
+				    console.log("sdfsjk")
+				    }     
+				    count++;
+				    if(count > 6 ){
+				      count = 0; 
+				    } 
+			  }
+
+			  console.log(keyVal)
+			  console.log(count+"----"+keyVal.length)
+			})
+
+
+			//重试按钮
+			$(".alertBtn").find("i").on("click",function(){
+				$(".passwordBox").addClass("passwordBoxOn");
+				$(".alertTipsBox").removeClass("alertTipsBoxOn");
+			})
+
+			//忘记密码按钮
+			$(".alertBtn").find("span").on("click",function(){
+				$(".alertTipsBox").removeClass("alertTipsBoxOn");
+			})
+
+			//取消支付按钮
+			$(".pwdTips").find("i").on("click",function(){
+				keyVal = "";
+				count = 0;
+				for(var i=0;i<6;i++){
+			        $(".box").eq(i).find("i").removeClass("keyOn");
+			    }
+				$(".passwordBox").removeClass("passwordBoxOn");
+			})
+
+			//切换捷顺通卡
+			$(".cardBox").find("b").on("click",function(){
+				$(".cardListBox").addClass('cardListBoxOn');
+				var listHtml = "";
+				$.ajax({
+					url:"/app/rest/userBindBkCards",
+					type:"GET",
+					dataType:"json",
+					success:function(data){
+						console.log(data.bindBkCardList);
+						
+						for(var i = 0;i < data.bindBkCardList.length;i++){
+							listHtml += '<li class="card">'+
+											'<i>icon</i><span>捷顺通卡（尾号'+data.bindBkCardList[i].bankCardCode.substring(15)+'）</span><b>￥ '+data.bindBkCardList[i].balance+'</b>'+
+										'</li>'
+						}
+						listHtml = listHtml + '<li class="toRecharge"><a href="#">去充值</a><i></i></li>';
+						$(".cardList").html(listHtml);
+						
+						$(".passwordBox").removeClass("passwordBoxOn");
+					},
+					error:function(error){
+						alert("服务未开启")
+					}
+				})
+			})
+
+			//选择卡
+			$(".cardList").on("click",".card",function(){
+				keyVal = "";
+				count = 0;
+				for(var i=0;i<6;i++){
+			        $(".box").eq(i).find("i").removeClass("keyOn");
+			    }
+				$(".cardBox").find("span").text($(this).find("span").text());
+				$(".cardListBox").removeClass('cardListBoxOn');
+				$(".passwordBox").addClass("passwordBoxOn");
+			})
+
+			//关闭卡列表开关
+			$(".cardTips").find("i").on("click",function(){
+				keyVal = "";
+				count = 0;
+				for(var i=0;i<6;i++){
+			        $(".box").eq(i).find("i").removeClass("keyOn");
+			    }
+				$(".cardListBox").removeClass('cardListBoxOn');
+				$(".passwordBox").addClass("passwordBoxOn");
+			})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		})
+	</script>
+</body>
+</html>

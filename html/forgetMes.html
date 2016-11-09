@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>忘记卡密码</title>
+	<link rel="stylesheet" type="text/css" href="../css/forgetMes.css">
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+</head>
+<body>
+	<header>
+		<div class="comfirmTips">
+			<span>请填写您购卡时填写的相关信息，确认身份</span>
+		</div>
+	</header>
+	<section>
+		<div class="messageBox">
+			<div class="uesrName">
+				<span>持卡人姓名</span><input type="text" placeholder="请填写您的姓名">
+			</div>
+			<div class="creClass">
+				<span>证件类型</span>
+				<div class="classListBox">
+					<dl>
+						<dt class="listChecked">身份证</dt>
+						<dd class="listBox">
+							<ul class="classLists">
+								<li>身份证</li>
+								<li>驾驶证</li>
+								<li>士兵证</li>
+								<li>武装警身份证</li>
+								<li>港澳台通行证</li>	
+								<li>台胞证</li>
+								<li>护照</li>
+								<li>军残证</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="cardNum">
+				<span>证件号</span><input id="cardId" type="tel" placeholder="请输入证件号">
+			</div>
+		</div>
+		<div class="warmthTips">
+			<span>信息加密处理，仅用于卡信息校验</span>
+			<p> sfjsf</p>
+		</div>
+	</section>
+	<div class="alertBox">
+		<div class="alertTips">
+			<p>身份校验失败，请核实信息后输入</p>
+			<i>重试</i>
+		</div>
+	</div>
+	<footer>
+		<button class="nextBtn button">下一步</button>
+	</footer>
+	<script type="text/javascript" src="../js/yz.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//选择卡类型
+			$(".listChecked").on("click",function(){
+				$(".listBox").addClass("listBoxOn");
+			})
+
+			//选卡
+			var type = 0;
+			$(".classLists").on("click","li",function(){
+				$(".listBox").removeClass("listBoxOn");
+				$(".listChecked").text($(this).text());
+				if($(this).index() == 0){
+					type = 0;
+				}else if($(this).index() == 1){
+					type = 1;
+				}else if($(this).index() == 6){
+					type = 6;
+				}else{
+					type = 4;
+				}
+			})
+
+			$(".nextBtn").on("click",function(){	
+				// if(type == 0){
+				// 	IdentityCodeValid($("#cardId").val());
+				// 	sendMes(0);
+				// }else if(type == 1){
+				// 	IdentityCodeValid($("#cardId").val());	
+				// 	sendMes(1);			
+				// }else if(type == 6){
+				// 	var reg = /^1[45][0-9]{7}|G[0-9]{8}|P[0-9]{7}|S[0-9]{7,8}|D[0-9]+$/
+				// 	if(reg.test($("#cardId").val())){
+				// 		$(".warmthTips p").text("11");
+				// 		sendMes(6);
+				// 	}else{
+				// 		$(".warmthTips p").text("请输入正确的证件号");
+				// 		sendMes(4);
+				// 	}
+				// }
+				sendMes();
+			})
+
+
+			function sendMes(){
+				$.ajax({
+					url:"",
+					type:"POST",
+					data:{},
+					dataType:"json",
+					success:function(data){
+
+					},
+					error:function(error){
+						
+					}
+				})
+			}
+
+		})
+
+	</script>
+</body>
+</html>

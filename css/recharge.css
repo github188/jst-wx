@@ -1,0 +1,333 @@
+@charset "UTF-8";
+/*公共样式*/
+/*public  css*/
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  font-style: normal;
+}
+
+html {
+  font-size: 10px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*清除浮动*/
+.clear:after {
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+/*按钮的样式*/
+.buttons {
+  display: flex;
+}
+
+.button {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  padding: 0.5rem 0;
+  outline: none;
+}
+
+/*form css*/
+.item-input {
+  width: 100%;
+}
+.item-input input {
+  box-sizing: border-box;
+  border: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 2rem;
+  outline: none;
+}
+
+/*背景样式*/
+.bg-gray {
+  background: #666;
+}
+
+/*列表样式*/
+.list .item {
+  display: flex;
+  font-size: 1.6rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #666;
+}
+.list .item:last-child {
+  border-bottom: 0;
+}
+.list .item span {
+  flex: 1;
+  text-align: left;
+}
+.list .item i {
+  flex: 1;
+  text-align: right;
+}
+
+/*顶部活动提示信息*/
+.act-tips {
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  background: #ff2d2d;
+  color: #fff;
+}
+.act-tips .act-lists li {
+  padding: 0.5rem 0;
+}
+
+/*充值页样式 start*/
+/*显示的卡 样式*/
+.re_showCard {
+  background: #fff;
+  font-size: 1.6rem;
+  padding: 0 1.5rem;
+  /*未绑卡*/
+}
+.re_showCard .re_cardMes {
+  display: none;
+  padding: 0.5rem 0;
+}
+.re_showCard .re_cardMes #re_card {
+  display: inline-block;
+  width: 80%;
+}
+.re_showCard .re_cardMes i {
+  display: inline-block;
+  width: 20%;
+  text-align: right;
+}
+.re_showCard .unbindCardOn {
+  display: block !important;
+}
+.re_showCard .unbindCardOff {
+  display: none !important;
+}
+.re_showCard .unbindCardBox {
+  display: none;
+  padding: 0.5rem 0;
+  width: 100%;
+}
+.re_showCard .unbindCardBox input {
+  padding: 0.5rem;
+  outline: none;
+}
+.re_showCard .unbindCardBox .unbindCardTips {
+  padding: 0.5rem 0;
+  font-size: 1.2rem;
+}
+.re_showCard .unbindCardBox .unbindCardTips a {
+  display: inline-block;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+  background: #666;
+}
+.re_showCard .re_cardBlance {
+  display: none;
+  padding: 0.5rem 0;
+}
+
+/*卡列表*/
+.re_cardListBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(204, 204, 204, 0.8);
+}
+.re_cardListBox .re_inputBox {
+  border: 0.1rem solid #666;
+  background: #fff;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  flex-direction: column;
+  display: none;
+  border-radius: 0.5rem;
+  margin-top: 30%;
+  box-sizing: border-box;
+}
+.re_cardListBox .re_inputBox .re_inp {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.re_cardListBox .re_inputBox .re_inp input {
+  flex: 3;
+  height: 2rem;
+  border: 0;
+  font-size: 1.6rem;
+  outline: none;
+  padding: 0.5rem 1rem;
+}
+.re_cardListBox .re_inputBox .re_inp i {
+  flex: 1;
+  display: inline-block;
+  text-align: right;
+  padding: 0.5rem 1rem;
+}
+.re_cardListBox .re_inputBox p {
+  flex: 1;
+  font-size: 2rem;
+  line-height: 3rem;
+  color: #000;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+  background: #666;
+}
+.re_cardListBox #re_cardList {
+  border-top: 0.1rem solid #666;
+  border-bottom: 0.1rem solid #666;
+  background: #fff;
+  padding: 0 2rem;
+  width: 80%;
+  margin: 20% auto;
+  border-radius: 0.5rem;
+}
+.re_cardListBox #re_cardList li {
+  border-bottom: 0.1rem solid #666;
+  padding: 0.5rem 0;
+  width: 100%;
+  height: 3rem;
+  line-height: 2.3rem;
+  box-sizing: border-box;
+  background: #fff;
+}
+.re_cardListBox #re_cardList li:last-child {
+  text-align: center;
+  border: 0;
+}
+.re_cardListBox #re_cardList .re_choice {
+  display: flex;
+  font-size: 1.2rem;
+}
+.re_cardListBox #re_cardList .re_choice .missCard {
+  opacity: 1;
+}
+.re_cardListBox #re_cardList .re_choice span {
+  flex: 2;
+  display: inline-block;
+  text-align: left;
+}
+.re_cardListBox #re_cardList .re_choice i {
+  flex: 1;
+  text-align: center;
+  opacity: 0;
+}
+.re_cardListBox #re_cardList .re_choice b {
+  flex: 1;
+  text-align: right;
+}
+
+/*卡类型 样式*/
+.re_cardTips {
+  background: #666;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.re_choiceSum {
+  background: #fff;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.6rem;
+}
+
+.re_box {
+  padding: 0.5rem 0;
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+}
+.re_box .re_on {
+  background: #0f0 !important;
+}
+.re_box .re_sum {
+  width: 26%;
+  text-align: center;
+  background: #999;
+  box-sizing: border-box;
+  border: 0.1rem solid #666;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  padding: 2rem 1rem;
+  margin: 3%;
+  font-size: 1.6rem;
+}
+.re_box .re_sum:nth-child(1) {
+  margin-left: 5%;
+}
+.re_box .re_sum:nth-child(4) {
+  margin-left: 5%;
+}
+
+.re_payBox {
+  background: #fff;
+  margin-top: 4rem;
+  font-size: 1.4rem;
+}
+.re_payBox .re_pay {
+  padding: 1rem 1.5rem;
+  display: flex;
+  border-bottom: 0.1rem solid #666;
+}
+.re_payBox .re_pay span {
+  flex: 1;
+  text-align: left;
+}
+.re_payBox .re_pay i {
+  flex: 1;
+  text-align: right;
+}
+.re_payBox .re_get {
+  padding: 1rem 1.5rem;
+  display: flex;
+}
+.re_payBox .re_get span {
+  flex: 1;
+  text-align: left;
+}
+.re_payBox .re_get i {
+  flex: 1;
+  text-align: right;
+}
+
+.re_btn {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 0 1.5rem;
+}
+.re_btn .re_sub {
+  width: 100%;
+  padding: 1.5rem 0.5rem;
+  border: 0;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+/*# sourceMappingURL=recharge.css.map */

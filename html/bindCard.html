@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>绑卡</title>
+	<link rel="stylesheet" type="text/css" href="../css/bindCard.css">
+	<script type="text/javascript" src="../js/zepto.js"></script>
+</head>
+<body>
+	<header>
+		<div class="tipsBox">
+			<p>您还未绑定捷顺通卡，（补充引导文案）</p>
+		</div>
+		<div class="iconBox">
+			<i>icon</i>
+		</div>
+	</header>
+	<section>
+		<div class="cardBox">
+			<div class="cardId">
+				<span>卡号</span><input type="tel" placeholder="请输入捷顺通卡号" maxlength="19">
+			</div>
+			<div class="cardPwd">
+				<span>卡密码</span><input type="password" placeholder="请输入卡密码">
+			</div>
+		</div>
+		<div class="pwdTips">
+			<a href="#">不知道卡密码？</a>
+		</div>
+	</section>
+	<footer>
+		<div class="btnBox">
+			<button class="button">确定</button>
+		</div>
+	</footer>
+	<div class="alertBox">
+		<div class="alertTips">
+			<span>密码不正确，还可以输入X次</span>
+		</div>
+		<div class="alertBtn">
+			<span>重试</span><i>忘记密码</i>
+		</div> 
+	</div>
+	<script type="text/javascript">
+	//var openId=${param.openId}; 
+	//alert(openId)
+		Zepto(function($){
+			var cardInfo = JSON.parse(sessionStorage.getItem("addCard"));
+			console.log(cardInfo)
+			if(cardInfo.length == 0){
+				$(".tipsBox").show();
+			}else{
+				$(".tipsBox").hide();
+			}
+			//卡号验证
+			$(".cardId input").on("keyup",function(){
+				if(/^[0-9]*$/.test($(this).val())){
+					if($(this).val().length == 19){
+						if($(this).val().substring(0,6) != "880755"){
+							alert("卡号不存在，请重新输入")
+						}
+					}
+				}else{
+					var str = $(this).val();
+					str = str.substring(0,str.length-1);
+					$(this).val(str);
+				}
+			})
+			//密码验证
+			//确定按钮事件
+			$(".btnBox").on("click","button",function(){
+				//alert("点击了确定")
+				if($(".cardId input").val().length < 19){
+					alert("捷顺通卡号为19位数字，请重新输入")
+				}else{
+					$.ajax({
+						url:"./bindJstCard.execute",
+						type:"POST",
+						data:{
+							openId:cardInfo.openId,
+							cardCode:$(".cardId input").val(),
+							password:$(".cardPwd input").val(),
+							accounttype:"2"
+						},
+						success:function(data){
+							var info = JSON.parse(data);
+							if(info.resCode == "WX000"){
+								location.href = "./bindSuccess.jsp?"+cardInfo.openId;
+							}else if(info.resCode == "WX007"){
+								$(".alertTips").find("span").text(info.msgContent);
+								$(".alertBox").addClass("alertBoxOn");
+								$(".alertBtn").find("i").hide();
+							}else if(info.resCode == "WX002"){
+								$(".alertTips").find("span").text(info.msgContent);
+								$(".alertBox").addClass("alertBoxOn");
+								$(".alertBtn").find("i").hide();
+							}else if(info.resCode == "WX008"){
+								$(".alertTips").find("span").text(info.msgContent);
+								$(".alertBox").addClass("alertBoxOn");
+							}
+							
+							console.log(info);
+							
+						},
+						error:function(error){
+							console.log("服务未开启")
+						}
+					})
+				}
+				
+			})
+
+			//重试按钮事件
+			$(".alertBtn").on("click","span",function(){
+				$(".alertBox").removeClass("alertBoxOn");
+			})
+			//忘记密码按钮事件
+			$(".alertBtn").on("click","i",function(){
+				//$(".alertBox").removeClass("alertBoxOn");
+			})
+
+		})
+	</script>
+</body>
+</html>

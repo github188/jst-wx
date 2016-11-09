@@ -1,0 +1,21 @@
+
+.accpay_pwti{text-align:center;}
+.writebox{width:100%;max-width:640px;overflow:hidden;margin:auto;position:relative;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.writebox ul{width:80%;margin:auto;overflow:hidden;text-align:center;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.writebox ul li{width:16%;height:46px;display:inline-block;background:#fff;border:1px solid #999;border-left:0px;}
+.writebox ul li:first-child{border-left:1px solid #999;/*border-top-left-radius:4px;border-bottom-left-radius:4px;*/}
+/*.writebox ul li:last-child{border-top-right-radius:4px;border-bottom-right-radius:4px;}*/
+.writebox ul li.bgcur{background:#fff url(../images/in_write.png) no-repeat center center;background-size:100% 40px;}
+.writebox ul li i{width:10px;height:10px;display:block;background:#000;border-radius:10px;margin:auto;margin-top:18px;}
+.writebox ul li i.n_one{display:none;}
+.keybbox{width:100%;max-width:640px;background:#c9c9c9;overflow:hidden;margin:auto;position:absolute;left:0px;bottom:0px;}
+@media(min-width:640px){   
+.keybbox{left:50%;margin-left:-320px;}
+}
+.keybbox .keyb_inp{width:33.156%;height:52px;color:#000;font-size:28px;background:#fff;outline:none;border:0px;border-radius:0px;-webkit-appearance:none;-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:"Microsoft YaHei", "Helvetica Neue", "Helvetica", "sans-serif", "arial", "宋体";}
+.keybbox .column{margin-left:0.266%;}
+.keybbox .line{margin-bottom:1px;}
+.keybbox input.useless{background:#dfdfdf;}
+.keybbox input.keyb_del{background:#dfdfdf url(../images/keyb_del.png) no-repeat center center;background-size:20% auto;}
+.keybbox input.tbg_grey{background:#dfdfdf;}
+.keybbox input.tbg_del{background:#fff url(../images/keyb_del.png) no-repeat center center;background-size:20% auto;}

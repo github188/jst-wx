@@ -1,0 +1,177 @@
+@charset "UTF-8";
+/*导入public*/
+/*public  css*/
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  font-style: normal;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+/*清除浮动*/
+.clear:after {
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+/*按钮的样式*/
+.buttons {
+  display: flex;
+}
+
+.button {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  padding: 0.5rem 0;
+  outline: none;
+}
+
+/*form css*/
+.item-input {
+  width: 100%;
+}
+.item-input input {
+  box-sizing: border-box;
+  border: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 2rem;
+  outline: none;
+}
+
+/*背景样式*/
+.bg-gray {
+  background: #666;
+}
+
+/*列表样式*/
+.list .item {
+  display: flex;
+  font-size: 1.6rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #666;
+}
+.list .item:last-child {
+  border-bottom: 0;
+}
+.list .item span {
+  flex: 1;
+  text-align: left;
+}
+.list .item i {
+  flex: 1;
+  text-align: right;
+}
+
+/*顶部活动提示信息*/
+.act-tips {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  background: #ff2d2d;
+  color: #fff;
+  display: none;
+}
+.act-tips .act-lists li {
+  padding: 0.2rem 0;
+  width: 100%;
+}
+.act-tips .act-lists li span {
+  display: inline-block;
+  width: 80%;
+}
+.act-tips .act-lists li a {
+  display: inline-block;
+  width: 20%;
+}
+
+.act-tipsOn {
+  display: block;
+}
+
+/*充值网点 样式*/
+.listBox {
+  background: #666;
+  height: 100%;
+}
+.listBox .lists {
+  background: #e3e3e3;
+}
+.listBox .lists .listItem {
+  box-sizing: border-box;
+  padding: 0.2rem 0.44rem;
+  margin-bottom: 0.1rem;
+  background: #fff;
+}
+.listBox .lists .listItem .listTitle h2 {
+  font-size: 20px;
+  line-height: 0.72rem;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.listBox .lists .listItem .address {
+  font-size: 16px;
+}
+.listBox .lists .listItem .address i {
+  display: inline-block;
+  width: 0.24rem;
+  height: 0.28rem;
+  background: url(../images/location.png) no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  line-height: 34px;
+  vertical-align: middle;
+}
+.listBox .lists .listItem .address span {
+  display: inline-block;
+  line-height: 34px;
+  width: 80%;
+  margin-left: 0.1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+.listBox .lists .listItem .telephone {
+  font-size: 14px;
+}
+.listBox .lists .listItem .telephone i {
+  display: inline-block;
+  width: 0.28rem;
+  height: 0.28rem;
+  background: url(../images/phone.png) no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  line-height: 34px;
+  vertical-align: middle;
+}
+.listBox .lists .listItem .telephone a {
+  display: inline-block;
+  margin-left: 0.1rem;
+  line-height: 34px;
+  vertical-align: middle;
+}
+
+/*# sourceMappingURL=rechargePoint.css.map */

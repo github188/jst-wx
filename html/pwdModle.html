@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>支付密码模板</title>
+	<link rel="stylesheet" type="text/css" href="../css/pwdModle.css">
+</head>
+<body>
+	<div class="pwdBody">
+		<section class="accpay_pwti">
+            <p>请设置支付密码</p>
+        </section>
+        <section id="numkeystage" class="writebox">
+             <ul>
+                 <li><i class="n_one"></i></li><li><i class="n_one"></i></li><li><i class="n_one"></i></li><li><i class="n_one"></i></li><li><i class="n_one"></i></li><li><i class="n_one"></i></li>
+             </ul>   
+        </section>
+        <section id="numkeyboard" class="keybbox">
+            <input class="keyb_inp keyb_num line" type="button" value="1" /><input class="keyb_inp keyb_num column line" type="button" value="2" /><input class="keyb_inp keyb_num column line" type="button" value="3" /><input class="keyb_inp keyb_num line" type="button" value="4" /><input class="keyb_inp keyb_num column line" type="button" value="5" /><input class="keyb_inp keyb_num column line" type="button" value="6" /><input class="keyb_inp keyb_num line" type="button" value="7" /><input class="keyb_inp keyb_num column line" type="button" value="8" /><input class="keyb_inp keyb_num column line" type="button" value="9" /><input class="keyb_inp useless" type="button" value="." /><input class="keyb_inp keyb_num column" type="button" value="0" /><input id="keyb_delbtn" class="keyb_inp keyb_del column" type="button" value=" " />
+        </section>
+	</div>
+	<script type="text/javascript" src="http://zeptojs.com/zepto.js"></script>
+	<script type="text/javascript" src="../js/pwd.js"></script>
+	<script type="text/javascript">
+		Zepto(function($){	
+			var cc = 456789;
+
+
+			NumberKeyBoard(function(data){
+				if(data==123456){
+					console.log(11)
+					
+				}else{
+					console.log(data)
+				}
+				
+			},cc,function(){
+				console.log(22222222222)
+			})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		})
+
+	</script>
+</body>
+</html>

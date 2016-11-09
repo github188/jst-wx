@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>充值结果</title>
+	<link rel="stylesheet" type="text/css" href="../css/rechargeResult.css">
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+</head>
+<body>
+	<section>
+		<div class="iconBox">
+			<i></i>
+		</div>
+		<div class="rechargeResult">
+			<span>充值成功</span>
+		</div>
+		<div class="resultTips">
+			<span>实际话费到账以运营商短信为准，请留意相关通知</span>
+		</div>
+		<div class="resultBtn">
+			<button class="button">完成</button>
+		</div>
+		<a href="javascript:window.close()" >关闭窗口</a>
+	</section>
+	<script type="text/javascript">
+		$(".resultBtn").find("button").on("click",function(){
+			window.close()
+		})
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+@charset "utf-8";
+@import "public";
+
+/*帮助中心*/
+.helpBox{
+
+	background:#e3e3e3;
+	.helpList{
+		margin-bottom: 0.25rem;
+		padding:0.26rem 0.3rem;
+		background:#ffffff;
+		&:last-child{
+			border:0;
+		}
+		.question{
+			display:flex;
+			padding:0.14rem 0;
+			color:#ea5920;
+			i{
+				width:10%;
+				font-size: 20px;
+			}
+			span{
+				width:90%;
+				font-size: 20px;
+			}
+		}
+		.answer{
+			padding:0.05rem;
+			display:flex;
+			font-size: 16px;
+			color:#666666;
+			i{
+				width:10%;
+			}
+			span{
+				width:90%;
+				line-height: 0.42rem;
+			}
+		}
+	}
+}

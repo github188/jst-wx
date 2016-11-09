@@ -1,0 +1,300 @@
+@charset "UTF-8";
+/*导入公共样式*/
+/*public  css*/
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  font-style: normal;
+}
+
+html {
+  font-size: 10px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*清除浮动*/
+.clear:after {
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+/*按钮的样式*/
+.buttons {
+  display: flex;
+}
+
+.button {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  padding: 0.5rem 0;
+  outline: none;
+}
+
+/*form css*/
+.item-input {
+  width: 100%;
+}
+.item-input input {
+  box-sizing: border-box;
+  border: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 2rem;
+  outline: none;
+}
+
+/*背景样式*/
+.bg-gray {
+  background: #666;
+}
+
+/*列表样式*/
+.list .item {
+  display: flex;
+  font-size: 1.6rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #666;
+}
+.list .item:last-child {
+  border-bottom: 0;
+}
+.list .item span {
+  flex: 1;
+  text-align: left;
+}
+.list .item i {
+  flex: 1;
+  text-align: right;
+}
+
+/*顶部活动提示信息*/
+.act-tips {
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  background: #ff2d2d;
+  color: #fff;
+}
+.act-tips .act-lists li {
+  padding: 0.5rem 0;
+}
+
+/*我的卡 样式*/
+.cardList {
+  padding: 2rem 1.5rem;
+}
+.cardList .list {
+  margin-bottom: 1.5rem;
+  /*显示部分*/
+  /*隐藏部分*/
+}
+.cardList .list .show {
+  display: flex;
+  background: #f0f0f0;
+  border-radius: 0.5rem;
+}
+.cardList .list .show .showIcon {
+  width: 4%;
+}
+.cardList .list .show .showIcon i {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: #666;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+.cardList .list .show .showIcon .iconOn {
+  background: #333;
+}
+.cardList .list .show .showMes {
+  width: 98%;
+  padding: 1rem 0.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: #666;
+}
+.cardList .list .show .showMes .cardId {
+  display: flex;
+}
+.cardList .list .show .showMes .cardId span {
+  width: 80%;
+  font-size: 1.6rem;
+  color: #fff;
+}
+.cardList .list .show .showMes .cardId i {
+  width: 20%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+.cardList .list .show .showMes .cardId .mainCard {
+  opacity: 0;
+}
+.cardList .list .show .showMes .cardType {
+  margin-top: 1rem;
+  display: flex;
+  font-size: 1.2rem;
+}
+.cardList .list .show .showMes .cardType i {
+  flex: 1;
+}
+.cardList .list .show .showMes .cardType .missCard {
+  opacity: 0;
+}
+.cardList .list .show .showMes .cardType span {
+  flex: 1;
+  text-align: right;
+}
+.cardList .list .show .showMes .stateIcon {
+  text-align: center;
+}
+.cardList .list .show .showMes .stateIcon i {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  box-sizing: border-box;
+  border-top: 0.2rem solid #fff;
+  border-left: 0.2rem solid #fff;
+  transform: rotate(-135deg);
+}
+.cardList .list .hide {
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: #888;
+  padding: 1rem 0.5rem;
+  display: none;
+}
+.cardList .list .hide .balance {
+  display: flex;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid #666;
+  font-size: 1.2rem;
+}
+.cardList .list .hide .balance .mainCardBalance {
+  flex: 1;
+}
+.cardList .list .hide .balance .cardBalance {
+  flex: 1;
+  text-align: right;
+}
+.cardList .list .hide .operation {
+  display: flex;
+  text-align: center;
+  padding-top: 0.5rem;
+}
+.cardList .list .hide .operation .unbind {
+  flex: 1;
+  border-right: 0.1rem solid #666;
+}
+.cardList .list .hide .operation .report {
+  flex: 1;
+  border-right: 0.1rem solid #666;
+}
+.cardList .list .hide .operation .reset {
+  flex: 1;
+  border-right: 0.1rem solid #666;
+}
+.cardList .list .hide .operation .setMain {
+  flex: 1;
+}
+.cardList .list .hide .operation .setMain span {
+  color: #000;
+}
+.cardList .list .hide .operation .setMain .mainOn {
+  color: #f0f0f0;
+}
+
+/*挂失提示信息*/
+.tipsBox {
+  display: none;
+}
+.tipsBox .tips {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.tipsBox .tips i {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  text-align: center;
+  line-height: 1rem;
+  border-radius: 50%;
+  background: #666;
+  color: #fff;
+  margin-right: 0.2rem;
+}
+.tipsBox .tips a {
+  text-decoration: underline;
+}
+
+/*绑定新卡*/
+.addCard {
+  background: #777;
+  text-align: center;
+  margin-top: 3rem;
+  padding: 0.8rem 0;
+}
+.addCard a {
+  font-size: 1.6rem;
+}
+.addCard a i {
+  font-size: 2rem;
+  color: #fff;
+  margin-right: 1rem;
+}
+
+/*弹出提示信息样式*/
+.alertBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(222, 222, 222, 0.5);
+  font-size: 1.6rem;
+  display: none;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.alertBox .alertMes {
+  border-radius: 0.5rem 0.5rem 0 0;
+  margin-top: 40%;
+  background: #fff;
+  line-height: 2rem;
+}
+.alertBox .alertMes span {
+  padding: 0.5rem;
+}
+.alertBox .alertMes p {
+  padding: 0.5rem;
+}
+.alertBox .alertBtn {
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: #fff;
+  display: flex;
+  text-align: center;
+  padding: 1rem;
+}
+.alertBox .alertBtn i {
+  flex: 1;
+}
+.alertBox .alertBtn span {
+  flex: 1;
+}
+
+.alertBoxOn {
+  display: block;
+}
+
+/*# sourceMappingURL=myCard.css.map */

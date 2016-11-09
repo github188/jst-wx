@@ -1,0 +1,139 @@
+@charset "utf-8";
+/*导入公共样式*/
+@import "public";
+
+/*验证信息样式*/
+/*头部提示信息*/
+.comfirmTips{
+	padding:2rem 1.5rem 0.5rem;
+	font-size:1.2rem;
+	background:#999;
+	span{
+
+	}
+}
+
+/*信息填写*/
+.messageBox{
+	padding:0.5rem 1.5rem;
+	background:#fff;
+	.uesrName{
+		display: flex;
+		padding:0.5rem 0;
+		box-sizing:border-box;
+		height:3rem;
+		font-size: 1.2rem;
+		span{
+			width:30%;
+		}
+		input{
+			width:70%;
+			border: 0;
+			outline: none;
+		}
+	}
+	.creClass{
+		display: flex;
+		padding:0.5rem 0;
+		box-sizing:border-box;
+		height:3rem;
+		font-size: 1.2rem;
+		span{
+			width:30%;
+		}
+		.classListBox{
+			width:70%;
+			dl{
+				position: relative;
+				.listChecked{
+					font-weight: bold;
+				}
+				.listBox{
+					position:absolute;
+					top:1.5rem;
+					left: 0;
+					background:#999;
+					width:100%;
+					display:none;
+					.classLists{
+						li{	
+							padding:0.5rem;
+							border-bottom:0.1rem solid #666;
+							text-align: center;
+						}
+					}
+					
+				}
+				.listBoxOn{
+					display: block;
+				}
+			}
+		}
+		
+	}
+	.cardNum{
+		display: flex;
+		padding:0.5rem 0;
+		box-sizing:border-box;
+		height:3rem;
+		font-size: 1.2rem;
+		span{
+			width:30%;
+		}
+		input{
+			width:70%;
+			border: 0;
+			outline: none;
+		}
+	}
+
+}
+/*特别提示*/
+.warmthTips{
+	text-align:center;
+	font-size: 12px;
+	background:#999;
+	padding:0.5rem 0;
+	height:5rem;
+	box-sizing:border-box;
+	span{
+
+	}
+	p{
+		padding:0.5rem 1.5rem;
+		color:red;
+		text-align:left;
+	}
+}
+/*下一步按钮*/
+.nextBtn{
+	margin-top:3rem;
+}
+/*提示*/
+.alertBox{
+	position:absolute;
+	top:50%;
+	left:50%;
+	height:5rem;
+	width:20rem;
+	margin-top:-2.5rem;
+	margin-left:-10rem;
+	background:#fff;
+	text-align:right;
+	display:none;
+	.alertTips{
+		padding:0.5rem 1rem;
+		p{
+			padding:0.5rem;
+			font-size:12px;
+			text-align: center;
+		}
+		i{
+			
+			font-size:16px;
+		}
+	}
+}
+.alertBoxOn{
+	display:block;
+}

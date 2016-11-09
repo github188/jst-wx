@@ -1,0 +1,136 @@
+@charset "utf-8";
+/*导入公共样式*/
+@import "public";
+
+/*账单查询样式*/
+.cardBox{
+	background:#666;
+	height:2rem;
+	line-height:2rem;
+	font-size:1.2rem;
+	.cardList{
+		text-align: center;
+		
+		.list-icon{
+			width:0.5rem;
+			height:0.5rem;
+			display: inline-block;
+			border-top:0.2rem solid #000;
+			border-left:0.2rem solid #000;
+			 transform: rotate(-135deg);
+		}
+		dt{
+			span{
+
+			}
+		}
+		dd{
+			position: absolute;
+			width:100%;
+			top:0;
+			left:0;
+			z-index: 999;
+			display: none;
+			height:100%;
+			.mList{
+				padding:0 1.5rem;
+				margin-top:2rem;
+				font-size: 1.2rem;
+				background:#666;
+				li{
+
+					display: flex;
+					padding:0.5rem 0;
+					border-bottom:0.1rem solid #777;
+					
+					span{
+						flex:3;
+
+					}
+					.miss-icon{
+						flex:1;
+						background:#ff0;						
+					}
+					.miss-on{
+						opacity: 0;
+					}
+					.mainCard{
+						flex:1;
+						
+					}
+					.main-on{
+						opacity: 0;
+					}
+					.checked{
+						flex:1;
+						background:#f00;
+					}
+					.checked-on{
+						opacity: 0;
+					}
+
+				}
+			}	
+		}
+	}
+}
+
+
+.billBox{
+
+	.billList{
+		padding: 0.5rem 1.5rem;
+		.none{
+
+			.none-icon{
+				text-align: center;
+				padding:0.5rem;
+			}
+			.none-tips{
+				text-align: center;
+				padding:0.5rem;
+			}
+			.none-link{
+				text-align: center;
+				padding:0.5rem;
+				text-decoration: underline;
+			}
+		}
+		.bill{
+			font-size: 1.2rem;
+			border-bottom:0.1rem solid #666;
+			padding:0.5rem 0;
+			&:last-child{
+				border-bottom:0;
+			}
+			.billTitle{
+				display:flex;
+				padding-top:0.5rem;
+				font-size: 1.6rem;
+				font-weight: bold;
+				.title{
+					width:80%;
+				}
+				.sum{
+					width:20%;
+					text-align: right;
+				}
+			}
+			.cardLast{
+				padding-top:0.5rem;
+			}
+			.billDate{
+				display:flex;
+				padding-top:0.5rem;
+				.date{
+					width:80%;
+				}
+				.result{
+					width:20%;
+					text-align: right;
+				}
+
+			}
+		}
+	}
+}

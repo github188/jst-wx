@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>腾讯地图</title>
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+</head>
+<body>
+	<div id="go">
+		<span>go</span>
+	</div>
+
+	<script type="text/javascript">
+		$("#go").click(function(){
+			$.ajax({
+				url:"http://apis.map.qq.com/ws/place/v1/search?boundary=region(深圳,0)&page_size=20&page_index=1&keyword=山水居超市&orderby=_distance&output=jsonp&key=WXHBZ-JB3AU-EEEVP-B2EWG-HSKJJ-WIFKP",
+				type:"GET",
+				dataType:"jsonp",
+				success:function(data){
+					console.log(data);
+					//location.href = "http://apis.map.qq.com/tools/poimarker?type=0&marker=coord:"+data.data[0].location.lat+","+data.data[0].location.lng+";title:山水居超市;addr:深圳市福田区龙尾路1&key=WXHBZ-JB3AU-EEEVP-B2EWG-HSKJJ-WIFKP&referer=myapp"
+				},
+				error:function(error){
+
+				}
+			})
+		})
+		
+
+	</script>
+</body>
+</html>

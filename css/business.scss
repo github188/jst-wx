@@ -1,0 +1,222 @@
+@charset "utf-8";
+/*导入public*/
+@import "public";
+
+/*特约商户*/
+/*顶部*/
+.b_nav{
+	display:flex;
+	box-sizing:border-box;
+	padding:0.5rem 1.5rem;
+	position:relative;
+	.searchBox{
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		padding:0.5rem 1.5rem;
+		box-sizing:border-box;
+		background:#fff;
+		z-index: 100;
+		display: none;
+		input{
+			width:88%;
+			outline: none;
+			border-radius:0.5rem;
+			border:0.1rem solid #666;
+			height:2rem;
+			padding:0.5rem 1rem;
+			box-sizing:border-box;
+			background:#fff;
+		}
+		i{
+			display: inline-block;
+			width:12%;
+			text-align: right;
+			height:2rem;
+			box-sizing:border-box;
+			line-height: 2rem;
+			background:#fff;
+		}
+	}
+	.searchBoxOn{
+		display:block;
+	}
+	.b_addr{
+		flex:1;
+		box-sizing:border-box;
+		.b_addrBox{
+			position:relative;
+			.b_city{
+				span{
+					display: inline-block;
+					margin-right: 1rem;
+				}
+				i{
+					width:1rem;
+					height:1rem;
+					box-sizing:border-box;
+					display: inline-block;
+					border-top:0.2rem solid #666;
+					border-left:0.2rem solid #666;
+					transform: rotate(225deg);
+				}
+			}
+			.b_cities{
+				position:absolute;
+				top:2rem;
+				left: 0;
+				background:#fff;
+				display: none;
+				.b_citiesList{
+					padding:0 0.5rem;
+					li{
+						padding:0.5rem 0;
+						text-align: center;
+						border-bottom:0.1rem solid #666;
+						&:last-child{
+							border:0;
+						}
+
+					}
+				}
+			}
+			.b_cListsOn{
+				display: block;
+			}
+		}
+		
+	}
+	.b_class{
+		flex:2;
+		text-align: center;
+		.b_classBox{
+			position:relative;
+			.b_classShow{
+				span{
+					display: inline-block;
+					margin-right: 1rem;
+				}
+				i{
+					width:1rem;
+					height:1rem;
+					box-sizing:border-box;
+					display: inline-block;
+					border-top:0.2rem solid #666;
+					border-left:0.2rem solid #666;
+					transform: rotate(225deg);
+				}
+			}
+			.b_classList{
+				position:absolute;
+				top:2rem;
+				left: 4rem;
+				background:#fff;
+				display:none;
+				.b_cLists{
+					padding:0 0.5rem;
+					li{
+						padding:0.5rem 0;
+						text-align: center;
+						border-bottom:0.1rem solid #666;
+						&:last-child{
+							border:0;
+						}
+					}
+				}
+			}
+			.b_classListOn{
+				display: block;
+			}
+		}
+		
+	}
+	.b_search{
+		flex:1;
+		text-align: right;
+		span{
+
+		}
+		i{
+
+		}
+	}
+}
+
+
+/*商户列表*/
+.b_shopBox{
+	padding:0 1.5rem;
+	width:100%;
+	box-sizing:border-box;
+	.unfind{
+		text-align: center;
+		width:100%;
+		margin-top: 1rem;
+		box-sizing:border-box;
+	}
+	.b_shopList{
+		width:100%;
+		display: flex;
+		margin-top: 1rem;
+		box-sizing:border-box;
+		.b_shopImg{
+			width:35%;
+			img{
+				width: 8rem;
+				height:8rem;
+			}
+		}
+		.b_shopMes{
+			padding-left:1rem;
+			box-sizing:border-box;
+			display: flex;
+			flex-direction: column;
+			width:65%;
+			.b_shopName{
+				flex:1;
+				width:100%;
+				p{
+					width:100%;
+					display: inline-block;
+					box-sizing:border-box;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+
+				}
+			}
+			.b_shopAddr{
+				flex:1;
+				i{
+					display: inline-block;
+					vertical-align: middle;
+					width:2rem;
+					height: 2rem;
+					background:url("../images/position.jpg");
+					background-size:2rem 2rem;
+					background-position:center;
+				}
+				span{
+
+				}
+			}
+			.b_shopTel{
+				flex:1;
+				i{
+					display: inline-block;
+					vertical-align: middle;
+					width:2rem;
+					height: 2rem;
+					background:url("../images/phone.jpg");
+					background-size:2rem 2rem;
+					background-position:center;
+				}
+				span{
+
+				}
+			}
+		}
+	}
+
+}

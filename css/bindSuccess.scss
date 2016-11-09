@@ -1,0 +1,37 @@
+@charset "utf-8";
+@import "public";
+
+/*绑卡结果样式*/
+.iconBox{
+	text-align:center;
+	padding-top:2rem;
+	i{
+		display:inline-block;
+		width:20rem;
+		height:10rem;
+		border:0.1rem solid #666;
+	}
+}
+.result{
+	padding-top:1rem;
+	text-align:center;
+	span{
+		font-size: 2rem;
+	}
+}
+.tips{
+	padding-top:1rem;
+	text-align:center;
+	span{
+
+	}
+	i{
+
+	}
+}
+.btn{
+	padding:2rem 10%;
+	button{
+
+	}
+}

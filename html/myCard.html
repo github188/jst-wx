@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>我的卡</title>
+	<link rel="stylesheet" type="text/css" href="../css/myCard.css">
+</head>
+<body>
+	<section>
+		<ul class="cardList">
+			<li class="list">
+				<div class="show">
+					<div class="showIcon">
+						<i></i>
+					</div>
+					<div class="showMes">
+						<div class="cardId">
+							<span>8809** *********4845</span><i>主卡</i>
+						</div>
+						<div class="cardType">
+							<i>icon</i><span>捷顺通卡</span>
+						</div>
+						<div class="stateIcon">
+							<i></i>
+						</div>
+					</div>
+				</div>
+				<div class="hide">
+					<div class="balance">
+						<div class="mainCardBalance">
+							主账户余额：<span>28214.55</span>元
+						</div>
+						<div class="cardBalance">
+							卡内余额：<span>48425.54</span>元&nbsp;<a href="billCheck.html">账单</a>
+						</div>
+					</div>
+					<div class="operation">
+						<div class="unbind">
+							<i></i><span>解绑</span>
+						</div>
+						<div class="report">
+							<i></i><span>挂失</span>
+						</div>
+						<div class="reset">
+							<i></i><span>重置密码</span>
+						</div>
+						<div class="setMain">
+							<i></i><span>设为主卡</span>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="tipsBox">
+			<p class="tips"><i>!</i>如需解挂此卡，请到<a href="#">捷顺通服务网点</a>进行办理</p>
+		</div>
+		<div class="addCard">
+			<a href="bindCard.html"><i>+</i>绑定新卡</a>
+		</div>
+	</section>
+	<div class="alertBox">
+		<div class="alertMes">
+			<span>温馨提示：</span>
+			<p>解绑后无法继续享受线上充值、线上快速查询等便捷功能。您确认要继续吗？</p>
+		</div>
+		<div class="alertBtn">
+			<i>确定</i><span>取消</span>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://zeptojs.com/zepto.js"></script>
+	<script type="text/javascript">
+		Zepto(function($){
+
+			//获取卡列表
+			$.ajax({
+				url:"/app/rest/userBindBkCards",
+				type:"GET",
+				detaType:"jsonp",
+				success:function(data){
+					console.log(data)
+					var miss = "";//记录是否显示挂失图标
+					var main = "";//记录是否为主卡
+					var html = "";
+					for(var i = 0;i<data.bindBkCardList.length;i++){
+						if(data.bindBkCardList[i].miss == "00"){
+							miss = "missCard";
+						}else{
+							miss = "";
+						}
+						if(data.bindBkCardList[i].mainCard == "00"){
+							mainCard = "mainCard";
+						}else{
+							mainCard = "";
+						}
+
+						html += '<li class="list">'+
+									'<div class="show">'+
+										'<div class="showIcon">'+
+											'<i></i>'+
+										'</div>'+
+										'<div class="showMes">'+
+											'<div class="cardId">'+
+												'<span>'+data.bindBkCardList[i].cardFirst+'** *********'+data.bindBkCardList[i].cardLast+'</span><i class="'+mainCard+'">主卡</i>'+
+											'</div>'+
+											'<div class="cardType">'+
+												'<i class="'+miss+'">icon</i><span>捷顺通卡</span>'+
+											'</div>'+
+											'<div class="stateIcon">'+
+												'<i></i>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<div class="hide">'+
+										'<div class="balance">'+
+											'<div class="mainCardBalance">'+
+												'主账户余额：<span>'+data.bindBkCardList[0].balance+'</span>元'+
+											'</div>'+
+											'<div class="cardBalance">'+
+												'卡内余额：<span>'+data.bindBkCardList[i].balance+'</span>元&nbsp;<a href="billCheck.html">账单</a>'+
+											'</div>'+
+										'</div>'+
+										'<div class="operation">'+
+											'<div class="unbind">'+
+												'<i></i><span>解绑</span>'+
+											'</div>'+
+											'<div class="report">'+
+												'<i></i><span>挂失</span>'+
+											'</div>'+
+											'<div class="reset">'+
+												'<i></i><span>重置密码</span>'+
+											'</div>'+
+											'<div class="setMain">'+
+												'<i></i><span>设为主卡</span>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+								'</li>'
+					}
+
+					$(".cardList").html(html);
+
+				},
+				error:function(error){
+					alert("服务未开启")
+				}
+			})
+
+			//显示隐藏的部分
+			$(".cardList").on("click",".list",function(){
+				var index = $(this).index();
+				if($(this).index() == index){
+					$(this).find(".hide").css("display","block")
+					$(this).siblings().find(".hide").css("display","none");
+				}else{
+					$(this).find(".hide").css("display","none")
+				}
+				
+				//挂失卡提示信息
+				if($(this).find(".cardType").find("i").hasClass("missCard")){
+					$(".tipsBox").css("display","block");
+					
+				}else{
+					$(".tipsBox").css("display","none");
+					
+				}
+				var that = $(this);
+				//解绑
+				$(this).on("click",".unbind",function(){
+					console.log(that.find(".cardId").find("span").text())
+				})	
+			})
+			
+			
+
+
+
+
+		})
+	</script>
+</body>
+</html>

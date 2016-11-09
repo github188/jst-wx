@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>充值</title>
+	<link rel="stylesheet" type="text/css" href="../css/recharge.css">
+</head>
+<body>
+	<header>
+		<div class="act-tips">
+			<ul class="act-lists">
+			</ul>
+		</div>
+		<div class="re_showCard">
+			<div class="re_cardMes">
+				<span id="re_card">546846464646464645&nbsp;主卡</span><i id="tab">换卡</i>
+			</div>
+			<div class="unbindCardBox">
+				<input type="tel" placeholder="请输入捷顺通卡号" maxlength="19">
+				<div class="unbindCardTips">
+					<a href="bindCard.html">绑卡</a><span>立即绑卡，体验在线查询等更多服务</span>
+				</div>	
+			</div>
+			<div id="showBalance" class="re_cardBlance">主账户&nbsp;<span>5000</span>元</div>
+			
+		</div>
+		<div class="re_cardTips">
+			<p>您是捷顺员工，享受充值立返<span>4%</span>优惠</p>
+		</div>	
+	</header>
+	<section>
+		<div class="re_choiceSum">
+			选择充值金额
+		</div>
+		<div class="re_box">
+			
+			<div class="re_sum">				
+				<span>50元</span>
+				<i></i>
+			</div>
+			<div class="re_sum re_on">
+				<span>100元</span>
+				<i></i>
+			</div>
+			<div class="re_sum">
+				<span>200元</span>
+				<i></i>
+			</div>
+		
+			<div class="re_sum">
+				<span>300元</span>
+				<i></i>
+			</div>
+			<div class="re_sum">
+				<span>500元</span>
+				<i></i>
+			</div>
+			<div class="re_sum">
+				<span>1000元</span>
+				<i></i>
+			</div>
+			
+		</div>
+		<div class="re_payBox">
+			<div class="re_pay">
+				<span>实际支付</span><i>100元</i>
+			</div>
+			<div class="re_get">
+				<span>实际到账</span><i>104元</i>
+			</div>
+		</div>
+		<div class="re_btn">
+			<button class="re_sub">确定支付</button>
+		</div>
+	</section>
+	<div class="re_cardListBox">
+		<ul id="re_cardList">
+			
+		</ul>
+		<div class="re_inputBox">
+			<div class="re_inp">
+				<input type="tel" placeholder="请输入捷顺通卡号" maxlength="20"><i>切换</i>
+			</div>
+			<p></p>
+		</div>
+	</div>
+	<p id="info" style="display:none">{"openid":"o6SFat4ZrXCocO5m5dHLRu_Y3cTs","acct_bal":7.63,"yhtype":"1","yhinfo":"\u6377\u987a\u5458\u5de5\u5fae\u4fe1\u5145\u503c\u4f18\u60e0\u6d3b\u52a8\uff0c\u957f\u671f\u6709\u6548","$usercodelist":[{"USERCODE":"8807551010000004178","VALID":"1"},{"USERCODE":"8807551010000005431","VALID":"0"}],"yhmoneylist":[{"MONEYNUM":"50","YHCOUNT":"52"},{"MONEYNUM":"100","YHCOUNT":"104"},{"MONEYNUM":"200","YHCOUNT":"208"},{"MONEYNUM":"300","YHCOUNT":"312"},{"MONEYNUM":"500","YHCOUNT":"520"},{"MONEYNUM":"1000","YHCOUNT":"1040"},{"MONEYNUM":"2000","YHCOUNT":"2080"}]}</p>
+
+	<script type="text/javascript" src="http://zeptojs.com/zepto.js"></script>
+	<script type="text/javascript">
+		Zepto(function($){
+			//接收数据
+			var setInfo = sessionStorage.setItem("userInfo",$("#info").text());
+			var getInfo = sessionStorage.getItem("userInfo");
+			var userInfo = JSON.parse(getInfo);
+			console.log(userInfo);
+			//初始化显示
+			
+			$(".re_cardBlance span").text(userInfo.acct_bal);
+
+			if(userInfo.$usercodelist.length != 0){//没帮卡
+				$(".unbindCardBox").addClass("unbindCardOn");
+				$(".re_cardMes").addClass("unbindCardOff");
+				$(".re_cardBlance").addClass("unbindCardOff");
+				$(".re_cardTips").hide();
+			}else{//绑卡
+				$(".unbindCardBox").addClass("unbindCardOff");
+				$(".re_cardMes").addClass("unbindCardOn");
+				$(".re_cardBlance").addClass("unbindCardOn");
+				for(var i=0;i<userInfo.$usercodelist.length;i++){
+					if(userInfo.$usercodelist[i].VALID == 1){
+						$("#re_card").text(userInfo.$usercodelist[i].USERCODE);
+					}
+				}
+				//是否有优惠
+				if(userInfo.yhtype == "1"){
+					$(".re_cardTips").show();
+					$(".re_pay").find("i").text(userInfo.yhmoneylist[1].MONEYNUM+"元");
+					$(".re_get").find("i").text(userInfo.yhmoneylist[1].YHCOUNT+"元");
+				}else{
+					$(".re_cardTips").hide();
+					$(".re_pay").find("i").text("100元");
+					$(".re_get").find("i").text("100元");
+				}
+				//是否有活动
+				if(userInfo.yhinfo != null){
+					var html = "<li>"+
+									"<span>"+userInfo.yhinfo+"</span><a href='#'>了解详情</a>"+
+								"</li>"
+					$(".act-tips").html(html);
+				}else{
+					$(".act-tips").hide();
+				}
+			}
+
+			//未绑卡输入卡号
+			$(".unbindCardBox input").on("keyup",function(){
+				if(/^[0-9]*$/.test($(this).val())){
+
+				}else{
+					var str = $(this).val();
+					str = str.substring(0,str.length-1);
+					$(this).val(str);
+				}
+				if($(this).val().length == 19){
+					//console.log("发送请求");
+					$(this).blur();
+					$.ajax({
+						url:"http://183.62.230.194/index.php/home/AccountBind/cardlist",
+						type:"POST",
+						dataType:"json",
+						success:function(data){
+							console.log(data);
+						},
+						error:function(error){
+
+						}
+					})
+				}
+			})
+			
+			//选择充值金额
+			var reCode = 0;//卡号是否正确
+			
+			if(reCode == 0){
+				$(".re_box").on("click",".re_sum",choiceSum);
+				$(".re_sub").on("click",sure)
+			}else{
+				$(".re_box").off("click",".re_sum",choiceSum);
+				$(".re_sub").off("click",sure)
+			}
+			function choiceSum(){//选择金额函数
+				$(".re_sum").removeClass("re_on");
+				$(this).addClass("re_on");
+
+				//显示支付金额
+				$(".re_pay").find("i").text(parseFloat($(".re_on").find("span").text())+"元");
+
+				if(userInfo.yhtype == "1"){
+					//显示到账金额
+					$(".re_get").find("i").text(userInfo.yhmoneylist[$(this).index()].YHCOUNT+"元")
+				}else{
+					$(".re_get").find("i").text(parseFloat($(".re_on").find("span").text())+"元");
+				}	
+			}
+
+			//卡列表
+			var html = "";
+			var mainCard = "";	//记录主卡标志
+			var missCard = ""; //记录挂失卡标志				
+			for(var j = 0; j<userInfo.$usercodelist.length; j++){
+				
+				//判断是否为主卡
+				if(userInfo.$usercodelist[j].VALID == "1"){
+					mainCard = " 主卡";
+					$("#re_card").text("****** *********"+userInfo.$usercodelist[j].USERCODE.substring(15)+" 主卡");
+					$("#re_balance").text(userInfo.$usercodelist[j].balance);
+				}else{
+					mainCard = "";
+				}
+				//判断是否为挂失卡
+				// if(userInfo.$usercodelistt[i].miss == "01"){
+				// 	missCard = "missCard";
+				// }else{
+				// 	missCard = "";
+				// }
+				html += '<li class="re_choice">'+
+							'<span>****** *********'+userInfo.$usercodelist[j].USERCODE.substring(15)+'</span><i class="'+missCard+'">icon</i><b>'+mainCard+'</b>'+
+						'</li>'
+			}
+			html += "<li class='re_input'>手动输入</li>";
+			$("#re_cardList").html(html);
+
+			//切换卡
+			var flag = true;//显示多卡开关
+			$("#tab").on("click",function(){
+				if(flag){
+					$(".re_cardListBox").css("display","block");
+					flag = false;
+				}else{
+					$(".re_cardListBox").css("display","none");
+					flag = true;
+				}
+			});
+			//选择卡
+			$("#re_cardList").on("click",".re_choice",function(){
+				var cardNum = userInfo.$usercodelist[$(this).index()].USERCODE;
+				$("#re_card").text($(this).find("span").text() + $(this).find("b").text());
+				$(".re_cardListBox").css("display","none");
+				//$("#re_balance").text(data.bindBkCardList[$(this).index()].balance);
+				$("#showBalance").show();
+				if(userInfo.yhtype == "1"){
+					$(".re_cardTips").show()
+				}else{
+					$(".re_cardTips").hide()
+				}
+				$.ajax({
+					url:"http://183.62.230.194/index.php/home/AccountBind/cardlist",
+					type:"POST",
+					dataType:"json",
+					data:{
+						openid:userInfo.openid,
+						USERCODE:cardNum
+					},
+					success:function(data){
+						console.log(data)
+					},
+					error:function(error){
+
+					}
+				})
+
+
+				flag = true;
+			});
+			//手动输入卡号
+			$(".re_input").on("click",function(){
+				$(".re_inputBox").css("display","block");
+				$("#re_cardList").css("display","none");
+				flag = true;
+			})
+
+			//手动输入监听键盘事件
+			var count = 0;
+			$(".re_inp").find("input").on("keyup",function(){
+				if(/^[0-9\s]*$/.test($(".re_inp").find("input").val())){
+
+
+				}else{
+					var str = $(".re_inp").find("input").val();
+					str = str.substring(0,str.length-1);
+					$(".re_inp").find("input").val(str);
+				}
+				count++;
+				if(count == 6){
+					$(".re_inp > input").val($(".re_inp > input").val()+" ");
+				}
+				$(".re_inputBox > p").text($(".re_inp > input").val());
+				
+
+				if($(".re_inp > input").val() == ""){
+					count = 0;
+				}
+
+			})
+			//手动输入---提交按钮事件
+			$(".re_inputBox").find("i").on("click",function(){
+				$(".re_inputBox").css("display","none");
+				var reg = /^\d{19}$/;
+				var regs = /\s/ig;
+				var txt = $(".re_inp > input").val().replace(regs, "");
+				
+				if(reg.test(txt)){
+					$("#re_card").text($(".re_inp > input").val());
+					$(".re_cardListBox").css("display","none");
+					$("#re_cardList").css("display","block");
+					$(".re_inputBox p").text("")
+					//验证卡号
+					$.ajax({
+						url:"http://183.62.230.194/index.php/home/AccountBind/cardlist",
+						type:"POST",
+						dataType:"json",
+						success:function(data){
+							console.log(data);
+						},
+						error:function(error){
+
+						}
+					})
+					$(".re_inp > input").val("")
+					count = 0;
+					
+				}else{
+					//alert("请输入正确的卡号");
+					$(".re_inputBox p").text("请输入正确的卡号")
+					$(".re_inputBox").css("display","block");
+					
+					count = 0;
+
+				}
+				//输入卡号不足19位
+				if(txt.length<19){
+					$(".re_inp > input").val("");
+					$(".re_inputBox p").text("请输入正确的卡号");
+					count = 0;
+					
+					console.log(txt)
+				}
+				$(".re_inputBox > p").css("background","#fff");
+				//$(".re_inp > input").val("");
+				$("#showBalance").hide();
+			})
+
+			
+
+			//确定充值
+			//$(".re_sub").on("click",sure);
+			function sure(){
+				console.log($(".re_box").find(".re_on").text());
+				alert("成功充值"+$(".re_box").find(".re_on").text())
+				// $.ajax({
+				// 	url:"http://183.62.230.194/index.php/home/AccountBind/cardlist",
+				// 	type:"POST",
+				// 	dataType:"json",
+				// 	data:{sum:100},
+				// 	success:function(data){
+				// 		console.log(data)
+				// 		//alert("充值成功")
+				// 	},
+				// 	error:function(error){
+				// 		alert("充值失败")
+				// 	}
+				// })
+			}
+
+
+
+
+		})
+	</script>
+</body>
+</html>

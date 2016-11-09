@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>js点击展开列表</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<script type="text/javascript">
+// 收缩展开效果
+$(document).ready(function(){
+$('.box').click(function(){
+$(this).children('.text').slideToggle().parents('.box').siblings('.box').children('.text').hide();
+})  
+});
+</script>
+<style type="text/css">
+.box{width:200px; margin:0 auto; background:#CCC;}
+.text{display:none;}
+</style>
+<body>
+<div class="box">
+  <h2>对ASP擅长的程序</h2>
+  <div class="text">论坛类和文章类</div>
+  </div>
+</div>
+<div class="box">
+  <h2>对PHP擅长的程序</h2>
+  <div class="text">博客类和新闻类</div>
+  </div>
+</div>
+<div class="box">
+  <h2>对前端擅长的插件</h2>
+  <div class="text">jquery</div>
+  </div>
+</div>
+</body>
+</html>

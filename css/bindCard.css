@@ -1,0 +1,201 @@
+@charset "UTF-8";
+/*public  css*/
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  font-style: normal;
+}
+
+html {
+  font-size: 10px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*清除浮动*/
+.clear:after {
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+/*按钮的样式*/
+.buttons {
+  display: flex;
+}
+
+.button {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  padding: 0.5rem 0;
+  outline: none;
+}
+
+/*form css*/
+.item-input {
+  width: 100%;
+}
+.item-input input {
+  box-sizing: border-box;
+  border: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 2rem;
+  outline: none;
+}
+
+/*背景样式*/
+.bg-gray {
+  background: #666;
+}
+
+/*列表样式*/
+.list .item {
+  display: flex;
+  font-size: 1.6rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #666;
+}
+.list .item:last-child {
+  border-bottom: 0;
+}
+.list .item span {
+  flex: 1;
+  text-align: left;
+}
+.list .item i {
+  flex: 1;
+  text-align: right;
+}
+
+/*顶部活动提示信息*/
+.act-tips {
+  padding: 1rem 1.5rem;
+  font-size: 1.4rem;
+  background: #ff2d2d;
+  color: #fff;
+}
+.act-tips .act-lists li {
+  padding: 0.5rem 0;
+}
+
+/*绑卡样式*/
+.tipsBox {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.iconBox {
+  text-align: center;
+  padding-top: 2rem;
+}
+.iconBox i {
+  display: inline-block;
+  width: 60%;
+  height: 5rem;
+  border: 0.1rem solid #666;
+}
+
+.cardBox {
+  padding: 0 1.5rem;
+  background: #999;
+  margin-top: 2rem;
+}
+.cardBox .cardId {
+  padding: 0.5rem;
+  display: flex;
+  border-bottom: 0.1rem solid #666;
+  height: 4rem;
+  box-sizing: border-box;
+  align-items: center;
+}
+.cardBox .cardId span {
+  flex: 1;
+}
+.cardBox .cardId input {
+  flex: 4;
+  border: 0;
+  outline: none;
+  background: #999;
+  color: #fff;
+}
+.cardBox .cardPwd {
+  padding: 0.5rem;
+  display: flex;
+  height: 4rem;
+  box-sizing: border-box;
+  align-items: center;
+}
+.cardBox .cardPwd span {
+  flex: 1;
+}
+.cardBox .cardPwd input {
+  flex: 4;
+  border: 0;
+  outline: none;
+  background: #999;
+  color: #fff;
+}
+
+.pwdTips {
+  margin-top: 2rem;
+  text-align: right;
+  padding: 0 1.5rem;
+  background: #fff;
+}
+
+.btnBox {
+  margin-top: 2rem;
+  padding: 0 1.5rem;
+}
+
+.alertBox {
+  display: none;
+  position: absolute;
+  background: rgba(122, 121, 123, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 0.5rem 20%;
+}
+.alertBox .alertTips {
+  margin-top: 46%;
+  background: #fff;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 1rem;
+}
+.alertBox .alertBtn {
+  background: #fff;
+  border-radius: 0 0 0.5rem 0.5rem;
+  display: flex;
+  padding: 1rem;
+}
+.alertBox .alertBtn span {
+  flex: 1;
+  text-align: left;
+}
+.alertBox .alertBtn i {
+  flex: 1;
+  text-align: right;
+}
+
+.alertBoxOn {
+  display: block;
+}
+
+/*# sourceMappingURL=bindCard.css.map */

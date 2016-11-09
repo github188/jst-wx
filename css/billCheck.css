@@ -1,0 +1,201 @@
+@charset "UTF-8";
+/*导入公共样式*/
+/*public  css*/
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  font-style: normal;
+}
+
+html {
+  font-size: 10px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*按钮的样式*/
+.buttons {
+  display: flex;
+}
+
+.button {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  padding: 0.5rem 0;
+  outline: none;
+}
+
+/*form css*/
+.item-input {
+  width: 100%;
+}
+.item-input input {
+  box-sizing: border-box;
+  border: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 2rem;
+  outline: none;
+}
+
+/*背景样式*/
+.bg-gray {
+  background: #666;
+}
+
+/*列表样式*/
+.list .item {
+  display: flex;
+  font-size: 1.6rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #666;
+}
+.list .item:last-child {
+  border-bottom: 0;
+}
+.list .item span {
+  flex: 1;
+  text-align: left;
+}
+.list .item i {
+  flex: 1;
+  text-align: right;
+}
+
+/*顶部活动提示信息*/
+.act-tips {
+  padding: 1rem 1.5rem;
+  font-size: 1.4rem;
+  background: #ff2d2d;
+  color: #fff;
+}
+.act-tips .act-lists li {
+  padding: 0.5rem 0;
+}
+
+/*账单查询样式*/
+.cardBox {
+  background: #666;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 1.2rem;
+}
+.cardBox .cardList {
+  text-align: center;
+}
+.cardBox .cardList .list-icon {
+  width: 0.5rem;
+  height: 0.5rem;
+  display: inline-block;
+  border-top: 0.2rem solid #000;
+  border-left: 0.2rem solid #000;
+  transform: rotate(-135deg);
+}
+.cardBox .cardList dd {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+  height: 100%;
+}
+.cardBox .cardList dd .mList {
+  padding: 0 1.5rem;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  background: #666;
+}
+.cardBox .cardList dd .mList li {
+  display: flex;
+  padding: 0.5rem 0;
+  border-bottom: 0.1rem solid #777;
+}
+.cardBox .cardList dd .mList li span {
+  flex: 3;
+}
+.cardBox .cardList dd .mList li .miss-icon {
+  flex: 1;
+  background: #ff0;
+}
+.cardBox .cardList dd .mList li .miss-on {
+  opacity: 0;
+}
+.cardBox .cardList dd .mList li .mainCard {
+  flex: 1;
+}
+.cardBox .cardList dd .mList li .main-on {
+  opacity: 0;
+}
+.cardBox .cardList dd .mList li .checked {
+  flex: 1;
+  background: #f00;
+}
+.cardBox .cardList dd .mList li .checked-on {
+  opacity: 0;
+}
+
+.billBox .billList {
+  padding: 0.5rem 1.5rem;
+}
+.billBox .billList .none .none-icon {
+  text-align: center;
+  padding: 0.5rem;
+}
+.billBox .billList .none .none-tips {
+  text-align: center;
+  padding: 0.5rem;
+}
+.billBox .billList .none .none-link {
+  text-align: center;
+  padding: 0.5rem;
+  text-decoration: underline;
+}
+.billBox .billList .bill {
+  font-size: 1.2rem;
+  border-bottom: 0.1rem solid #666;
+  padding: 0.5rem 0;
+}
+.billBox .billList .bill:last-child {
+  border-bottom: 0;
+}
+.billBox .billList .bill .billTitle {
+  display: flex;
+  padding-top: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.billBox .billList .bill .billTitle .title {
+  width: 80%;
+}
+.billBox .billList .bill .billTitle .sum {
+  width: 20%;
+  text-align: right;
+}
+.billBox .billList .bill .cardLast {
+  padding-top: 0.5rem;
+}
+.billBox .billList .bill .billDate {
+  display: flex;
+  padding-top: 0.5rem;
+}
+.billBox .billList .bill .billDate .date {
+  width: 80%;
+}
+.billBox .billList .bill .billDate .result {
+  width: 20%;
+  text-align: right;
+}
+
+/*# sourceMappingURL=billCheck.css.map */

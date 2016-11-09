@@ -1,0 +1,312 @@
+@charset "UTF-8";
+/*导入public*/
+/*public  css*/
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  font-style: normal;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html {
+  font-size: 10px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*清除浮动*/
+.clear:after {
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+/*按钮的样式*/
+.buttons {
+  display: flex;
+}
+
+.button {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  padding: 0.5rem 0;
+  outline: none;
+}
+
+/*form css*/
+.item-input {
+  width: 100%;
+}
+.item-input input {
+  box-sizing: border-box;
+  border: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 2rem;
+  outline: none;
+}
+
+/*背景样式*/
+.bg-gray {
+  background: #666;
+}
+
+/*列表样式*/
+.list .item {
+  display: flex;
+  font-size: 1.6rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #666;
+}
+.list .item:last-child {
+  border-bottom: 0;
+}
+.list .item span {
+  flex: 1;
+  text-align: left;
+}
+.list .item i {
+  flex: 1;
+  text-align: right;
+}
+
+/*顶部活动提示信息*/
+.act-tips {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  background: #ff2d2d;
+  color: #fff;
+  display: none;
+}
+.act-tips .act-lists li {
+  padding: 0.2rem 0;
+  width: 100%;
+}
+.act-tips .act-lists li span {
+  display: inline-block;
+  width: 80%;
+}
+.act-tips .act-lists li a {
+  display: inline-block;
+  width: 20%;
+}
+
+.act-tipsOn {
+  display: block;
+}
+
+/*特约商户*/
+/*顶部*/
+.b_nav {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0.5rem 1.5rem;
+  position: relative;
+}
+.b_nav .searchBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  box-sizing: border-box;
+  background: #fff;
+  z-index: 100;
+  display: none;
+}
+.b_nav .searchBox input {
+  width: 88%;
+  outline: none;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #666;
+  height: 2rem;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  background: #fff;
+}
+.b_nav .searchBox i {
+  display: inline-block;
+  width: 12%;
+  text-align: right;
+  height: 2rem;
+  box-sizing: border-box;
+  line-height: 2rem;
+  background: #fff;
+}
+.b_nav .searchBoxOn {
+  display: block;
+}
+.b_nav .b_addr {
+  flex: 1;
+  box-sizing: border-box;
+}
+.b_nav .b_addr .b_addrBox {
+  position: relative;
+}
+.b_nav .b_addr .b_addrBox .b_city span {
+  display: inline-block;
+  margin-right: 1rem;
+}
+.b_nav .b_addr .b_addrBox .b_city i {
+  width: 1rem;
+  height: 1rem;
+  box-sizing: border-box;
+  display: inline-block;
+  border-top: 0.2rem solid #666;
+  border-left: 0.2rem solid #666;
+  transform: rotate(225deg);
+}
+.b_nav .b_addr .b_addrBox .b_cities {
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  background: #fff;
+  display: none;
+}
+.b_nav .b_addr .b_addrBox .b_cities .b_citiesList {
+  padding: 0 0.5rem;
+}
+.b_nav .b_addr .b_addrBox .b_cities .b_citiesList li {
+  padding: 0.5rem 0;
+  text-align: center;
+  border-bottom: 0.1rem solid #666;
+}
+.b_nav .b_addr .b_addrBox .b_cities .b_citiesList li:last-child {
+  border: 0;
+}
+.b_nav .b_addr .b_addrBox .b_cListsOn {
+  display: block;
+}
+.b_nav .b_class {
+  flex: 2;
+  text-align: center;
+}
+.b_nav .b_class .b_classBox {
+  position: relative;
+}
+.b_nav .b_class .b_classBox .b_classShow span {
+  display: inline-block;
+  margin-right: 1rem;
+}
+.b_nav .b_class .b_classBox .b_classShow i {
+  width: 1rem;
+  height: 1rem;
+  box-sizing: border-box;
+  display: inline-block;
+  border-top: 0.2rem solid #666;
+  border-left: 0.2rem solid #666;
+  transform: rotate(225deg);
+}
+.b_nav .b_class .b_classBox .b_classList {
+  position: absolute;
+  top: 2rem;
+  left: 4rem;
+  background: #fff;
+  display: none;
+}
+.b_nav .b_class .b_classBox .b_classList .b_cLists {
+  padding: 0 0.5rem;
+}
+.b_nav .b_class .b_classBox .b_classList .b_cLists li {
+  padding: 0.5rem 0;
+  text-align: center;
+  border-bottom: 0.1rem solid #666;
+}
+.b_nav .b_class .b_classBox .b_classList .b_cLists li:last-child {
+  border: 0;
+}
+.b_nav .b_class .b_classBox .b_classListOn {
+  display: block;
+}
+.b_nav .b_search {
+  flex: 1;
+  text-align: right;
+}
+
+/*商户列表*/
+.b_shopBox {
+  padding: 0 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+.b_shopBox .unfind {
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+  box-sizing: border-box;
+}
+.b_shopBox .b_shopList {
+  width: 100%;
+  display: flex;
+  margin-top: 1rem;
+  box-sizing: border-box;
+}
+.b_shopBox .b_shopList .b_shopImg {
+  width: 35%;
+}
+.b_shopBox .b_shopList .b_shopImg img {
+  width: 8rem;
+  height: 8rem;
+}
+.b_shopBox .b_shopList .b_shopMes {
+  padding-left: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+}
+.b_shopBox .b_shopList .b_shopMes .b_shopName {
+  flex: 1;
+  width: 100%;
+}
+.b_shopBox .b_shopList .b_shopMes .b_shopName p {
+  width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.b_shopBox .b_shopList .b_shopMes .b_shopAddr {
+  flex: 1;
+}
+.b_shopBox .b_shopList .b_shopMes .b_shopAddr i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 2rem;
+  height: 2rem;
+  background: url("../images/position.jpg");
+  background-size: 2rem 2rem;
+  background-position: center;
+}
+.b_shopBox .b_shopList .b_shopMes .b_shopTel {
+  flex: 1;
+}
+.b_shopBox .b_shopList .b_shopMes .b_shopTel i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 2rem;
+  height: 2rem;
+  background: url("../images/phone.jpg");
+  background-size: 2rem 2rem;
+  background-position: center;
+}
+
+/*# sourceMappingURL=business.css.map */

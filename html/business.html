@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../css/business.css">
+	<title>特约商户</title>
+</head>
+<body>
+	<header>
+		<div class="b_nav">
+			<div class="searchBox">
+				<input type="text"><i>取消</i>
+			</div>
+			<div class="b_addr">
+				<dl class="b_addrBox">
+					<dt class="b_city">
+						<span>深圳</span><i></i>	
+					</dt>
+					<dd class="b_cities">
+						<ul  class="b_citiesList">
+							<li>深圳</li>
+							<li>广州</li>
+							<li>北京</li>
+							<li>上海</li>
+							<li>其他</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div class="b_class">
+				<dl class="b_classBox">
+					<dt class="b_classShow">
+						<span>全部</span><i></i>	
+					</dt>
+					<dd class="b_classList">
+						<ul id="b_cLists" class="b_cLists">
+							<li>餐饮类</li>
+							<li>零售类</li>
+							<li>商超百货类</li>
+							<li>汽车服务类</li>
+							<li>医疗保健类</li>
+							<li>健身美业类</li>
+							<li>旅游相关类</li>
+							<li>文化教育类</li>
+							<li>其他</li>
+							<li>全部</li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div class="b_search">
+				<span>搜索</span><i></i>	
+			</div>
+
+		</div>
+	</header>
+	<section>
+		<ul class="b_shopBox">
+			<li class="b_shopList">
+				<div class="b_shopImg">
+					<img src="../images/food.jpg">
+				</div>
+				<div class="b_shopMes">
+					<div class="b_shopName">
+						<p>设计开发经理根据地哦世界观省纪念历史</p>
+					</div>
+					<div class="b_shopAddr">
+						<i></i><span>生活方式立刻恢复快结束了看法离开谁告诉就</span>
+					</div>
+					<div class="b_shopTel">
+						<i></i><a href="tel:13359845612">13359845612</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+
+	</section>
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<script type="text/javascript">
+	Zepto(function($){
+
+		//获取店铺列表
+		shopList();
+		function shopList(){
+			$.ajax({
+				url:"/app/rest/getAccountInfo",
+				type:"GET",
+				dataType:"json",
+				success:function(data){
+					var html = "";
+					for(var i = 0;i<data.shopList.length;i++){
+						html += "<li class='b_shopList'>"+
+									"<div class='b_shopImg'>"+
+										"<img src='"+data.shopList[i].shopImg+"'/>"+
+									"</div>"+
+									'<div class="b_shopMes">'+
+										'<div class="b_shopName">'+
+											'<p>'+data.shopList[i].shopName+'</p>'+
+										'</div>'+
+										'<div class="b_shopAddr">'+
+											'<i></i><span>'+data.shopList[i].shopAddr+'</span>'+
+										'</div>'+
+										'<div class="b_shopTel">'+
+											'<i></i><a href="tel:'+data.shopList[i].shopTel+'">'+data.shopList[i].shopTel+'</a>'+
+										'</div>'+
+									'</div>'+
+								"</li>"
+					}
+					$(".b_shopBox").html(html)
+				},
+				error:function(error){
+
+				}
+			})
+		}
+
+		//城市选择
+		$(".b_city").on("click",function(){
+			$(".b_cities").css("display","block");
+			$(".b_city > i").css("transform","rotate(45deg)");
+			$(".b_citiesList").on("click","li",function(){
+				$(".b_city > span").text($(this).text());
+				$(".b_city > i").css("transform","rotate(-135deg)");
+				$(".b_cities").css("display","none");
+			})
+		})
+
+		//类别显示
+		$(".b_classShow").on("click",function(){
+			$(".b_classList").css("display","block");
+			$(".b_classShow > i").css("transform","rotate(45deg)");
+			$(".b_cLists").on("click","li",function(){
+				$(".b_classShow > span").text($(this).text());
+				$(".b_classShow > i").css("transform","rotate(-135deg)");
+				$(".b_classList").css("display","none");
+			})
+		})
+
+		//显示搜索框事件
+		$(".b_search > span").on("click",function(){
+			$(".searchBox").addClass("searchBoxOn");
+		})
+
+		//取消搜索事件
+		$(".searchBox").find("i").on("click",function(){
+			//console.log("wewe");
+			$(".searchBox").removeClass("searchBoxOn");
+			shopList();
+		})
+
+		//搜索框键盘监听事件
+		$(".searchBox").find("input").on("keyup",function(){
+
+			$.ajax({
+				url:"/app/rest/getAccountInfo",
+				type:"POST",
+				dataType:"json",
+				data:{
+					searchTxt:$(".searchBox input").val()
+				},
+				success:function(data){
+					
+					var html = "";
+					var licount = 0;
+					switch ($(".searchBox input").val().length){
+						case 1:
+							licount = 1;
+						break;
+						case 2:
+							licount = 2;
+						break;
+						case 3:
+							licount = 3;
+						break;
+						default:
+							html = "<li class='unfind'><span>未找到匹配内容</span></li>";
+						break;
+
+					}
+					for(var i = 0;i<licount;i++){
+						html += "<li class='b_shopList'>"+
+									"<div class='b_shopImg'>"+
+										"<img src='"+data.shopList[i].shopImg+"'/>"+
+									"</div>"+
+									'<div class="b_shopMes">'+
+										'<div class="b_shopName">'+
+											'<p>'+data.shopList[i].shopName+'</p>'+
+										'</div>'+
+										'<div class="b_shopAddr">'+
+											'<i></i><span>'+data.shopList[i].shopAddr+'</span>'+
+										'</div>'+
+										'<div class="b_shopTel">'+
+											'<i></i><a href="tel:'+data.shopList[i].shopTel+'">'+data.shopList[i].shopTel+'</a>'+
+										'</div>'+
+									'</div>'+
+								"</li>"
+					}
+					$(".b_shopBox").html(html)
+				},
+				error:function(error){
+
+				}
+			})
+
+		})		
+
+	})
+	</script>
+</body>
+</html>

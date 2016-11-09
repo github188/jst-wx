@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>绑卡成功</title>
+	<link rel="stylesheet" type="text/css" href="../css/bindSuccess.css">
+	<script type="text/javascript" src="http://zeptojs.com/zepto.js"></script>
+</head>
+<body>
+	<section>
+		<div class="iconBox">
+			<i></i>
+		</div>
+		<div class="result">
+			<span>绑定成功!</span>
+		</div>
+		<div class="tips">
+			<span>为保障安全，如您尚未修改卡密码，请立即</span><i>修改卡密码</i>
+		</div>
+		<div class="btn">
+			<button class="button">去充值</button>
+		</div>
+	</section>
+
+	<script type="text/javascript">
+		Zepto(function($){
+
+
+			$(".btn button").on("click",function(){
+				location.href = "recharge.html"
+			})
+
+
+
+
+
+
+
+		})
+
+
+
+
+	</script>
+</body>
+</html>

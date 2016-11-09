@@ -1,0 +1,39 @@
+@charset "utf-8";
+@import "public";
+
+/*充值结果样式*/
+.iconBox{
+	text-align:center;
+	margin-top:3rem;
+	padding:0.5rem 2rem;
+	i{
+		display: inline-block;
+		width:20rem;
+		height:10rem;
+		background:#666;
+	}
+}
+.rechargeResult{
+	text-align:center;
+	margin-top:2rem;
+	padding:0.5rem 2rem;
+	span{
+
+	}
+}
+.resultTips{
+	text-align:center;
+	margin-top:2rem;
+	padding:0.5rem 2rem;
+	span{
+		
+	}
+}
+.resultBtn{
+	text-align:center;
+	margin-top:2rem;
+	padding:0.5rem 2rem;
+	button{
+
+	}
+}

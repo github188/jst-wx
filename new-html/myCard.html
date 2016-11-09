@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <script type="text/javascript">
+    	(function () {
+		    document.addEventListener('DOMContentLoaded', function () {
+		        var html = document.documentElement;
+		        var windowWidth = html.clientWidth;
+		        html.style.fontSize = windowWidth / 6.4 + 'px';
+		        // 等价于html.style.fontSize = windowWidth / 640 * 100 + 'px';    
+		    }, false);
+	    })();
+    </script>
+	<meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
+	<title>我的卡</title>
+	<link rel="stylesheet" type="text/css" href="../new-css/myCard.css">
+	<script type="text/javascript" src="../js/fastclick.js"></script>
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+</head>
+<body>
+	<header class="cardBox">
+		<ul class="listBox">
+			<li class="list index">
+				<span class="cardNum">8807** *********8904</span>
+				<span class="bill">账单<i></i></span>
+			</li>
+			<li class="list">
+				<span class="cardNum">8807** *********1234</span>
+				<span class="bill">账单<i></i></span>
+			</li>
+			<li class="list">
+				<span class="cardNum">8807** *********4567</span>
+				<span class="bill">账单<i></i></span>
+			</li>
+		</ul>
+		<div id="nav">
+			<span class="on"></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</header>
+
+	<script type="text/javascript">
+		$(function(){
+			$(".listBox").bind("swipeLeft",".list",function(e){
+				e.preventDefault();
+				$(this).css("z-index",0);
+				for(var i =0 ;i < $(".list").length;i++){
+					if($(this).index() != i){
+						$(".list").eq(i).css("z-index",100-i);
+					}
+				}
+				
+				console.log("向左滑"+$(this).index())
+			})
+			$(".listBox").bind("swipeRight",".list",function(){
+				e.preventDefault();
+				alert("向右滑")
+			})
+
+
+
+
+		})
+	</script>
+</body>
+</html>
