@@ -36,9 +36,10 @@ html,body{
 /*我的卡*/
 .cardBox{
 	padding:0 0.3rem;
+	padding-top:0.34rem;
 	.listBox{
 		width:100%;
-		padding-top:0.34rem;
+		
 		height:3.28rem;
 		position:relative;
 		.index{
@@ -83,6 +84,146 @@ html,body{
 					transform: rotate(270deg);
 					vertical-align: middle;
 				}
+			}
+		}
+	}
+}
+
+/*提示*/
+.nav{
+	
+	.navlist{
+		display:flex;
+		justify-content:center;
+		li{
+			border-radius:0.02rem;
+			width:0.3rem;
+			height:0.06rem;
+			background:#efefef;
+			margin:0 0.04rem;
+		}
+		.on{
+			background:#cacaca;
+		}
+	}
+	
+}
+
+/*账户信息*/
+.balanceBox{
+	display:flex;
+	padding:0.76rem 0.3rem 0;
+	height:1.7rem;
+	.acc_balance{
+		flex:1;
+		display:flex;
+		flex-direction:column;
+		border-bottom:0.01rem solid #d1d1d1;
+		i{
+			font-size:22px;
+			color:#878787;
+			line-height:40px;
+		}
+		span{
+			font-size:32px;
+			font-weight:bold;
+			line-height:50px;
+			color:#333333;
+		}
+	}
+	.ele_balance{
+		flex:1;
+		display:flex;
+		flex-direction:column;
+		border-bottom:0.01rem solid #d1d1d1;
+		i{
+			font-size:22px;
+			line-height:40px;
+			color:#878787;
+		}
+		span{
+			font-size:32px;
+			font-weight:bold;
+			color:#333333;
+			line-height:50px;
+		}
+	}
+	.recharge_btn{
+		flex:1;
+		border-bottom:0.01rem solid #d1d1d1;
+		position:relative;
+		.btn{
+			width:1.4rem;
+			height:0.56rem;
+			border-radius:0.24rem;
+			border:0.01rem solid #ea5920;
+			color:#ea5920;
+			font-size:28px;
+			background:#ffffff;
+			position:absolute;
+			top:50%;
+			right:0;
+			margin-top:-0.28rem;
+			outline:none;
+		}
+		.btnOn{
+			background:#ea5920;
+			color:#ffffff;
+		}
+	}
+}
+/*相关操作*/
+.operBox{
+	padding:0 0.3rem;
+	.operation{
+		li{
+			font-size:28px;
+			height:1rem;
+			line-height:1rem;
+			border-bottom:0.01rem solid #d1d1d1;
+			position:relative;
+			i{
+				width:0.3rem;
+				height:0.3rem;
+				display:inline-block;
+				background-image:url(../images/public/jt3.png);
+				background-repeat:no-repeat;
+				background-size:100% 100%;
+				background-position:center;
+				position:absolute;
+				top:50%;
+				right:0;
+				margin-top:-0.15rem;
+			}
+		}
+	}
+}
+
+/*绑卡*/
+.bindBox{
+	width:100%;
+	height:0.84rem;
+	position:absolute;
+	left:0;
+	bottom:0;
+	.bind{
+		text-align:center;
+		height:100%;
+		position:relative;
+		i{
+			display:inline-block;
+			width:2.61rem;
+			height:0.84rem;
+			background-image:url(../images/myCard/bcard01.png);
+			background-repeat:no-repeat;
+			background-size:100% 100%;
+			background-position:center;
+			position:absolute;
+			left:50%;
+			bottom:0;
+			margin-left:-1.3rem;
+			&:active{
+				background-image:url(../images/myCard/bcard02.png);
 			}
 		}
 	}

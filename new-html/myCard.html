@@ -34,36 +34,76 @@
 				<span class="bill">账单<i></i></span>
 			</li>
 		</ul>
-		<div id="nav">
-			<span class="on"></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
 	</header>
+	<div class="nav">
+		<ul class="navlist">
+			<li class="on"></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="balanceBox">
+		<div class="acc_balance">
+			<i>账户余额</i>
+			<span>1234</span>
+		</div>
+		<div class="ele_balance">
+			<i>电子钱包</i>
+			<span>1234</span>
+		</div>
+		<div class="recharge_btn">
+			<button class="btn btnOn">充值</button>
+		</div>
+	</div>
+
+	<div class="operBox">
+		<ul class="operation">
+			<li class="unbind">解绑<i></i></li>
+			<li class="loss">挂失<i></i></li>
+			<li class="reset">重置密码<i></i></li>
+		</ul>
+	</div>
+	
+	<div class="bindBox">
+		<div class="bind">
+			<i></i>
+		</div>
+	</div>
+
 
 	<script type="text/javascript">
 		$(function(){
 			$(".listBox").bind("swipeLeft",".list",function(e){
 				e.preventDefault();
-				$(this).css("z-index",0);
-				for(var i =0 ;i < $(".list").length;i++){
-					if($(this).index() != i){
-						$(".list").eq(i).css("z-index",100-i);
-					}
+				$(".list").eq(0).removeClass("index");
+				$(this).animate({"z-index":1,"opacity":0},300);
+				if($(this).index() != $(".list").length-1){
+					$(".list").eq($(this).index()+1).animate({"z-index":5,"opacity":1},300);
+					$(".navlist li").eq($(this).index()+1).addClass("on");
+					$(".navlist li").eq($(this).index()+1).siblings().removeClass("on");
+				}else{
+					$(".list").eq(0).animate({"z-index":5,"opacity":1},300);
+					$(".navlist li").eq(0).addClass("on");
+					$(".navlist li").eq(0).siblings().removeClass("on");
 				}
-				
 				console.log("向左滑"+$(this).index())
 			})
-			$(".listBox").bind("swipeRight",".list",function(){
+
+			$(".listBox").bind("swipeRight",".list",function(e){
 				e.preventDefault();
-				alert("向右滑")
+				$(".list").eq(0).removeClass("index");
+				$(this).animate({"z-index":1,"opacity":0},300);
+				if($(this).index() != 0){
+					$(".list").eq($(this).index()-1).animate({"z-index":5,"opacity":1},300);
+					$(".navlist li").eq($(this).index()-1).addClass("on");
+					$(".navlist li").eq($(this).index()-1).siblings().removeClass("on");
+				}else{
+					$(".list").eq($(".list").length-1).animate({"z-index":5,"opacity":1},300);
+					$(".navlist li").eq($(".navlist li").length-1).addClass("on");
+					$(".navlist li").eq($(".navlist li").length-1).siblings().removeClass("on");
+				}
+				console.log("向右滑"+$(this).index())
 			})
-
-
-
-
 		})
 	</script>
 </body>
