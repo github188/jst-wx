@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,12 +13,13 @@
 		        // 等价于html.style.fontSize = windowWidth / 640 * 100 + 'px';    
 		    }, false);
 	    })();
+	    var openId='${openId}';
     </script>
 	<meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
 	<title>我的卡</title>
-	<link rel="stylesheet" type="text/css" href="../new-css/myCard.css">
-	<script type="text/javascript" src="../js/fastclick.js"></script>
-	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/myCard.css">
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/fastclick.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/zepto.min.js"></script>
 </head>
 <body>
 	<header class="cardBox">
@@ -105,6 +108,6 @@
 	</div>
 
 
-	<script type="text/javascript" src="../js/myCard.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/myCard.js"></script>
 </body>
 </html>
