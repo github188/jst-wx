@@ -37,25 +37,30 @@ html,body{
 .cardBox{
 	padding:0 0.3rem;
 	padding-top:0.34rem;
+	height:3.62rem;
+	width:5.8rem;
+	margin:0 auto;
+	overflow:hidden;
+	position:relative;
 	.listBox{
-		width:100%;
-		
+		width:40rem;
 		height:3.28rem;
-		position:relative;
+		position:absolute;
+		top:0.34rem;
+		left:0;
 		.index{
 			z-index:3;
 		}
+		display: flex;
 		.list{
 			width:5.8rem;
 			height:3.28rem;
-			margin:0 auto;
+			
 			background-image:url(../images/myCard/mcard06.png);
 			background-repeat:no-repeat;
 			background-size:100% 100%;
 			background-position:center;
-			position:absolute;
-			top: 0;
-			left:0;
+			
 			.cardNum{
 				position:absolute;
 				top:1.34rem;

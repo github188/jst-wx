@@ -10,6 +10,7 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  box-sizing: border-box;
 }
 
 html, body {
@@ -29,25 +30,32 @@ html, body {
 
 /*绑卡样式*/
 .bindHead {
-  height: 2.6rem;
+  height: 2.3rem;
   box-sizing: border-box;
-  padding: 0.26rem 0.3rem;
-  background: #ffe9e0;
-  border-bottom: 0.01rem solid #d1d1d1;
+  background-image: url("../images/bindCard/card01.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 .bindHead .iconBox {
-  height: 2.36rem;
+  height: 100%;
   width: 100%;
   box-sizing: border-box;
-  background-image: url("../images/bindCardTopBg.jpg");
-  background-size: 100% 2.34rem;
-  background-repeat: no-repeat;
   display: flex;
   align-items: center;
+  position: relative;
+}
+.bindHead .iconBox .cardTitle {
+  position: absolute;
+  top: 0.84rem;
+  left: 0.7rem;
+  font-size: 22px;
+  color: #ffffff;
 }
 .bindHead .iconBox i {
   display: inline-block;
-  padding: 0.05rem 0.7rem;
+  position: absolute;
+  top: 1.34rem;
+  left: 0.7rem;
   color: #ffffff;
   font-size: 34px;
 }
@@ -117,6 +125,7 @@ html, body {
   display: inline-block;
   width: 0.3rem;
   height: 0.3rem;
+  font-size: 28px;
   border-radius: 50%;
   box-sizing: border-box;
   border: 0.02rem solid #ef7f53;
@@ -140,7 +149,6 @@ html, body {
   width: 100%;
   outline: none;
   border: 0;
-  background: #e3e3e3;
   box-sizing: border-box;
   border-radius: 0.1rem;
   font-size: 32px;
@@ -309,6 +317,42 @@ html, body {
 
 .alertBoxOn {
   display: block;
+}
+
+/*键盘*/
+.keyBox {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4rem;
+}
+.keyBox .numKey {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 4.8rem;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.keyBox .key {
+  width: 1.6rem;
+  height: 1rem;
+  border: 0;
+  border-radius: 0;
+  background: #ffffff;
+  font-size: 40px;
+  outline: none;
+}
+.keyBox .otherKey {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 1.6rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=bindCard.css.map */
