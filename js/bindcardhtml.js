@@ -7,6 +7,7 @@ $(function(){
 	var count = 0;//记录空格标志
 	var cardNum = "";//记录卡号
 	$(".cardId input").bind("keyup",function(){
+		$(".cardTitle").addClass("cardTitleOn");
 		//只能输入数字
 		if(/^[0-9\s]*$/.test($(this).val())){
 

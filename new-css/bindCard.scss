@@ -56,6 +56,10 @@ html,body{
 			left:0.7rem;
 			font-size: 22px;
 			color:#ffffff;
+			display: none;
+		}
+		.cardTitleOn{
+		    display: block;
 		}
 		i{
 			display: inline-block;
@@ -133,18 +137,19 @@ html,body{
 			display: inline-block;
 			width:0.3rem;
 			height:0.3rem;
-			font-size: 28px;
-			border-radius:50%;
-			box-sizing:border-box;			
-			border:0.02rem solid #ef7f53;
-			background: #ffd7ad;
-			text-align: center;
+			background-image: url(../images/bindCard/jg.png);
+			background-size:100% 100%;
+            background-repeat:no-repeat;
 			margin-right:0.1rem;
-			// vertical-align: middle;
+			vertical-align: middle;
 		}
 		span{
+		    line-height: 0.3rem;
+		    display: inline-block;
+		    vertical-align: middle;
 			&:hover{
 				cursor:pointer;
+				
 			}
 		}
 	}
@@ -206,7 +211,7 @@ html,body{
 			height: 0.44rem;
 			width: 0.44rem;
 			border-radius:50%;
-			background-image:url("../images/closeIcon.jpg");
+			background-image:url("../images/public/X2.png");
 			background-repeat:no-repeat;
 			background-size:100% 100%;
 			vertical-align: middle;
