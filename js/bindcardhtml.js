@@ -71,10 +71,10 @@ $(function(){
 	})
 
 	//确定按钮事件
-	$(".comfirmBtn").bind("click",".btnOn",function(){
+	$(".comfirmBtn").bind("touchstart",".btnOn",function(){
 		console.log(cardNum)
-		$(".alertBox").addClass("alertBoxOn");
-		$(".pwdError").addClass("btnOn");
+		// $(".alertBox").addClass("alertBoxOn");
+		// $(".pwdError").addClass("btnOn");
 		//location.href = "bindSuccess.html";
 		// $.ajax({
 		// 		url:"./bindJstCard.execute",

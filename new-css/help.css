@@ -1,0 +1,73 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  font-style: normal;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*清除浮动*/
+.clear:after {
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+/*帮助中心*/
+.helpBox {
+  background: #e3e3e3;
+}
+.helpBox .helpList {
+  margin-bottom: 0.25rem;
+  padding: 0.26rem 0.3rem;
+  background: #ffffff;
+}
+.helpBox .helpList:last-child {
+  border: 0;
+}
+.helpBox .helpList .question {
+  display: flex;
+  padding: 0.14rem 0;
+  color: #ea5920;
+}
+.helpBox .helpList .question i {
+  width: 0.5rem;
+  font-size: 32px;
+  text-align: center;
+}
+.helpBox .helpList .question span {
+  flex: 1;
+  font-size: 32px;
+}
+.helpBox .helpList .answerBox {
+  padding: 0.05rem;
+  display: flex;
+  color: #666666;
+}
+.helpBox .helpList .answerBox i {
+  width: 0.5rem;
+}
+.helpBox .helpList .answerBox .answer {
+  flex: 1;
+}
+.helpBox .helpList .answerBox .answer p {
+  font-size: 24px;
+  line-height: 0.42rem;
+}
+
+/*# sourceMappingURL=help.css.map */

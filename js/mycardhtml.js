@@ -22,7 +22,7 @@ $(function(){
 					// 	var left = -(currentIndex + 1) * 5.8 * -1 + "rem";
 					// }
 					//var left = -($(this).index() + 1)*5.8 + "rem";
-					$(this).parent().animate({"left":left}, 300)
+					$(this).parent().animate({"left":left,"opacity":1}, 300)
 					// if(currentIndex == -($(".list").length)){
 					// 	$(this).parent().css("left",0)
 					// 	currentIndex = 0;
@@ -231,8 +231,9 @@ $(function(){
 					// }
 					console.log("向右滑"+$(this).index())
 				})
-
+				
 				//设为主卡
+				var memoryInfo = {}
 				var setMain = "";
 				$(".asMain").bind("tap",function(){
 					if($(this).hasClass("asMainOn")){
@@ -248,7 +249,6 @@ $(function(){
 
 
 				//解绑
-				
 				$(".unbind").bind("tap",function(){
 					operType = 2;
 					$(".alertBox").addClass("alertBoxOn");
@@ -305,40 +305,36 @@ $(function(){
 						// })				
 
 					}else if(operType == 2){//解绑
-						// carry = {
-						// 	openId:userInfo.openId,
-						// 	carryMes:"您即将解绑尾号"+userInfo.list[$(".index").index()].usercode.substring(15)+"的捷顺通卡",
-						// 	accounttype:userInfo.list[$(".index").index()].accounttype,
-						// 	tips:"请输入卡密码",
-						// 	type:1
-						// };
-						
-						// sessionStorage.setItem("pwdShow",JSON.stringify(carry));
-						// console.log(carry)
+						memoryInfo = {
+							openId:"openId",
+							cardNo:"cardNum",
+							accounttype:"02",
+							type:"unbind"
+						}
+						sessionStorage.setItem("memory",JSON.stringify(memoryInfo));
+						location.href = "../new-html/password.html"
 						console.log("解绑")
 						operType = 0;
 					}else if(operType == 3){//挂失
-						// carry = {
-						// 	openId:userInfo.openId,
-						// 	carryMes:"您即将解绑尾号"+userInfo.list[$(".index").index()].usercode.substring(15)+"的捷顺通卡",
-						// 	accounttype:userInfo.list[$(".index").index()].accounttype,
-						// 	tips:"请输入卡密码",
-						// 	type:2
-						// };
-						
-						// sessionStorage.setItem("pwdShow",JSON.stringify(carry))
+						memoryInfo = {
+							openId:"openId",
+							cardNo:"cardNum",
+							accounttype:"02",
+							type:"loss"
+						}
+						sessionStorage.setItem("memory",JSON.stringify(memoryInfo));
+						location.href = "../new-html/password.html"
 						console.log("挂失");
 						operType = 0;
 					}else if(operType == 4){//重置密码
-						// carry = {
-						// 	openId:userInfo.openId,
-						// 	carryMes:"您即将解绑尾号"+userInfo.list[$(".index").index()].usercode.substring(15)+"的捷顺通卡",
-						// 	accounttype:userInfo.list[$(".index").index()].accounttype,
-						// 	tips:"请输入卡密码",
-						// 	type:0
-						// };
-						
-						// sessionStorage.setItem("pwdShow",JSON.stringify(carry))
+						memoryInfo = {
+							openId:"openId",
+							cardNo:"cardNum",
+							accounttype:"02",
+							type:"reset"
+						}
+						sessionStorage.setItem("memory",JSON.stringify(memoryInfo));
+						location.href = "../new-html/password.html"
 						console.log("重置密码");
 						operType = 0;
 					}

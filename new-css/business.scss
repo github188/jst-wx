@@ -1,0 +1,282 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  font-style: normal;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*清除浮动*/
+.clear:after {
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+/*特约商户*/
+/*顶部*/
+.b_nav{
+	display:flex;
+	padding:0.24rem 0.3rem 0.28rem;
+	position:relative;
+	font-size: 28px;
+	color:#333333;
+	border-bottom:0.01rem solid #d1d1d1;
+	.searchBox{
+		position:absolute;
+		top:50%;
+		left:0.3rem;
+		width:100%;
+		margin-top:-0.25rem;
+		background:#fff;
+		z-index: 100;
+		display: none;
+		input{
+			width:5rem;
+			height:0.5rem;
+			font-size: 28px;
+			line-height: 0.5rem;
+			outline: none;
+			border-radius:0.1rem;
+			border:0;
+			padding-left:0.28rem;
+			box-sizing:border-box;
+			background:#e8e8e8;
+		}
+		i{
+			display: inline-block;
+			width:12%;
+			text-align: right;
+			height:0.22rem;
+			box-sizing:border-box;
+			line-height: 0.2rem;
+			background:#fff;
+			color:#ea5920;
+		}
+	}
+	.searchBoxOn{
+		display:block;
+	}
+	.b_addr{
+		flex:1;
+		.b_city{
+			span{
+				display: inline-block;
+				margin-right: 0.1rem;
+				vertical-align: middle;
+			}
+			i{
+				width:0.3rem;
+				height:0.3rem;
+				display: inline-block;
+				background-image:url(../images/public/jt1.png);
+				background-size:100% 100%;
+				background-position:center;
+				background-repeat:no-repeat;
+				vertical-align: middle;
+			}
+		}
+	}
+	.b_class{
+		flex:2;
+		text-align: center;
+		.b_classShow{
+			span{
+				display: inline-block;
+				margin-right: 0.1rem;
+				vertical-align: middle;
+			}
+			i{
+				width:0.3rem;
+				height:0.3rem;
+				display: inline-block;
+				background-image:url(../images/public/jt1.png);
+				background-size:100% 100%;
+				background-position:center;
+				background-repeat:no-repeat;
+				vertical-align: middle;
+			}
+		}	
+	}
+	.b_search{
+		flex:1;
+		text-align: right;
+		span{
+			display: inline-block;
+			margin-right: 0.1rem;
+			vertical-align: middle;
+		}
+		i{
+			width:0.3rem;
+			height:0.3rem;
+			display: inline-block;
+			background-image:url(../images/public/ss.png);
+			background-size:100% 100%;
+			background-position:center;
+			background-repeat:no-repeat;
+			vertical-align: middle;
+		}
+	}
+}
+
+/*城市选择列表*/
+.b_cities{
+	position:absolute;
+	top:0;
+	left: 0;
+	width:100%;
+	height:100%;
+	font-size:28px;
+	background:rgba(135,135,135,0);
+	display: none;
+	.b_citiesList{
+		padding:0 0.1rem;
+		background:#ffffff;
+		width:1.45rem;
+		position:absolute;
+		top:0.88rem;
+		left:0.3rem;
+		li{
+			padding:0.1rem 0;
+			text-align: center;
+			border-bottom:0.01rem solid #666;
+			&:last-child{
+				border:0;
+			}
+
+		}
+	}
+}
+.b_cListsOn{
+	display: block;
+}
+/*类型列表*/
+.b_classList{
+	position:absolute;
+	width: 100%;
+	height:100%;
+	top:0;
+	left: 0;
+	background:rgba(135,135,135,0);
+	display:none;
+	font-size:28px;
+	.b_cLists{
+		padding:0 0.1rem;
+		width: 2.9rem;
+		background:#ffffff;
+		position:absolute;
+		top:0.88rem;
+		left:50%;
+		margin-left: -1.45rem;
+		li{
+			padding:0.1rem 0;
+			text-align: center;
+			border-bottom:0.01rem solid #666;
+			&:last-child{
+				border:0;
+			}
+		}
+	}
+}
+.b_classListOn{
+	display: block;
+}
+
+/*商户列表*/
+.b_shopBox{
+	width:100%;
+	font-size: 28px;
+	.unfind{
+		text-align: center;
+		width:100%;
+		margin-top: 0.5rem;
+		box-sizing:border-box;
+	}
+	.b_shopList{
+		width:100%;
+		display: flex;
+		padding:0.2rem 0.3rem;
+		border-bottom:0.01rem solid #d1d1d1;
+		.b_shopImg{
+			width: 2.3rem;
+			padding-right:0.3rem;
+			img{
+				width: 2rem;
+				height:1.7rem;
+				border-radius:0.1rem;
+			}
+		}
+		.b_shopMes{
+			box-sizing:border-box;
+			display: flex;
+			flex-direction: column;
+			flex:1;
+			.b_shopName{
+				flex:1;
+				p{
+					width:3.46rem;
+					font-size: 32px;
+					font-weight: bold;
+					box-sizing:border-box;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+			}
+			.b_shopAddr{
+				flex:1;
+				i{
+					display: inline-block;
+					vertical-align: middle;
+					width:0.3rem;
+					height: 0.3rem;
+					background:url("../images/public/dz.png");
+					background-size:100% 100%;
+					background-position:center;
+					background-repeat:no-repeat;
+					margin-right:0.1rem;
+				}
+				span{
+					display: inline-block;
+					vertical-align: middle;
+					color: #666666;
+				}
+			}
+			.b_shopTel{
+				flex:1;
+				i{
+					display: inline-block;
+					vertical-align: middle;
+					width:0.3rem;
+					height: 0.3rem;
+					background:url("../images/public/dh.png");
+					background-size:100% 100%;
+					background-position:center;
+					background-repeat:no-repeat;
+					margin-right:0.1rem;
+				}
+				a{
+					display: inline-block;
+					vertical-align: middle;
+					color: #666666;
+				}
+			}
+		}
+	}
+
+}

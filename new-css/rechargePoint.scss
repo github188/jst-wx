@@ -1,0 +1,106 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  font-style: normal;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*清除浮动*/
+.clear:after {
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+/*充值网点 样式*/
+.listBox{
+	background:#e3e3e3;
+	height:100%;
+	.lists{	
+		background:#e3e3e3;
+		.listItem{
+			box-sizing:border-box;
+			padding:0 0.44rem;
+			width:100%;
+			margin-bottom:0.1rem;
+			background:#fff;
+			.listTitle{
+				h2{
+					font-size:32px;
+					width:100%;
+					color:#333333;
+					font-weight: bold;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					padding-top: 0.28rem;
+					padding-bottom:0.26rem;
+				}
+			}
+			.address{
+				font-size:24px;
+				color:#666666;
+				padding-bottom:0.14rem;
+				i{
+					display: inline-block;
+					width:0.3rem;
+					height:0.3rem;
+					background:url(../images/public/dz.png) no-repeat;
+					background-position:center;
+					background-size: 100% 100%;
+					background-repeat:no-repeat;
+					vertical-align: middle;
+				}
+				span{
+					display: inline-block;
+					font-size:24px;
+					width:80%;
+					margin-left:0.1rem;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					vertical-align: middle;
+					color:#666666;
+				}
+				
+			}
+			.telephone{
+				font-size: 24px;
+				padding-bottom:0.28rem;
+				i{
+					display: inline-block;
+					width:0.3rem;
+					height:0.3rem;
+					background:url(../images/public/dh.png) no-repeat;
+					background-position:center;
+					background-size: 100% 100%;
+					background-repeat:no-repeat;
+					vertical-align: middle;
+				}
+				a{
+					display: inline-block;
+					margin-left:0.1rem;
+					line-height: 0.34rem;
+					vertical-align: middle;
+					color:#666666;
+				}
+			}
+		}
+	}
+}
