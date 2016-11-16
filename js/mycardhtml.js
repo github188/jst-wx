@@ -2,25 +2,28 @@ $(function(){
 
 
 				//向左滑
-				var html = $(".list").eq(0).clone(true);
-				console.log(html)
-				$(".listBox").append(html)
+				//var html = $(".list").eq(0).clone(true);
+				//console.log(html)
+				//$(".listBox").append(html)
 				var currentIndex = 0;//计数器
 				var left = "";
 				$(".listBox").bind("swipeLeft",".list",function(e){
 					e.preventDefault();
-					currentIndex++; 
-					if(currentIndex < $(".list").length){
-						//currentIndex = 1;
-						//oUL.style.left = "0px";
-						//left ="0rem";
-						left = currentIndex * 5.8 * -1 +"rem";
-						$(this).parent().animate({"left":left}, 300);
-					}else{
-						$(this).parent().animate({"left":0}, 300);
-						currentIndex = 0;
-					}
-					
+					//currentIndex++; 
+					// if(currentIndex < $(".list").length){
+					// 	//currentIndex = 1;
+					// 	//oUL.style.left = "0px";
+					// 	//left ="0rem";
+					// 	left = currentIndex * 5.8 * -1 +"rem";
+					// 	$(this).parent().animate({"left":left}, 300);
+					// }else{
+					// 	$(this).parent().animate({"left":0}, 300);
+					// 	currentIndex = 0;
+					// }
+					$(".listBox").animate({marginLeft:"-5.8rem"},600, function () {  
+	                    $(".list").eq(0).appendTo($(".listBox"));  
+	                    $(".listBox").css('marginLeft','0rem');  
+	                });
 
 					// index++;
 					// if ( index< llength) {
@@ -145,20 +148,23 @@ $(function(){
 				//向右滑
 				$(".listBox").bind("swipeRight",".list",function(e){
 					e.preventDefault();
-					currentIndex ++;
-					var right = "";
-					if($(this).index() != ($(".list").length-1)){
-						right = -($(".list").length - currentIndex)*5.8 + "rem";
-						$(this).parent().css("left",right)
-						if(currentIndex == ($(".list").length)){
-							right = -($(".list").length -1)*5.8 +"rem"
-							$(this).parent().css("left",right)
-							currentIndex = 0;
-						}
-					}else{
+					$(".listBox").css('marginLeft','-5.8rem');  
+	                $(".list").eq(4).prependTo($(".listBox"));  
+	                $(".listBox").animate({marginLeft:"0rem"},600);
+					// currentIndex ++;
+					// var right = "";
+					// if($(this).index() != ($(".list").length-1)){
+					// 	right = -($(".list").length - currentIndex)*5.8 + "rem";
+					// 	$(this).parent().css("left",right)
+					// 	if(currentIndex == ($(".list").length)){
+					// 		right = -($(".list").length -1)*5.8 +"rem"
+					// 		$(this).parent().css("left",right)
+					// 		currentIndex = 0;
+					// 	}
+					// }else{
 
 					 
-					}
+					// }
 					//导航条
 					// navCount --;
 					// if(navCount <= -1){
