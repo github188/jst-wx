@@ -1,100 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-    <script type="text/javascript">
-    	(function () {
-		    document.addEventListener('DOMContentLoaded', function () {
-		        var html = document.documentElement;
-		        var windowWidth = html.clientWidth;
-		        html.style.fontSize = windowWidth / 6.4 + 'px';
-		        // 等价于html.style.fontSize = windowWidth / 640 * 100 + 'px';    
-		    }, false);
-	    })();
-    </script>
-	<meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
-	<title>我的卡</title>
-	<script type="text/javascript" src="../js/fastclick.js"></script>
-	<script type="text/javascript" src="../js/zepto.min.js"></script>
-	<script type="text/javascript" src="../js/main.js"></script>
-	<style type="text/css">
-		*{
-			margin:0;
-			padding:0;
-			list-style: none;
-		}
-
-		.box{
-			width:300px;
-			height:200px;
-			border:1px solid #000;
-			margin: 0 auto;
-			overflow: hidden;
-			position: relative;
-		}
-		.box .list{
-			width:3000px;
-			position: absolute;
-			left: 0;
-		}
-		.clear:after{
-			content:"";
-			display: block;;
-			height: 0;
-			overflow: hidden;
-			clear: both;
-		}
-		.box .list .item{
-			font-size:20px;
-			width:300px;
-			height:200px;
-			float:left;
-		}
-
-	</style>
-</head>
-<body>
-	<div class="box clear">
-		<ul class="list">
-			<li class="item" style="background:red">1</li>
-			<li class="item" style="background:blue">2</li>
-			<li class="item" style="background:yellow">3</li>
-			<li class="item" style="background:green">4</li>
-			<li class="item" style="background:#666666">5</li>
-		</ul>
-	</div>
-	<script type="text/javascript">
-		$(function(){
-			var index = 0;
-			$(".list").bind("swipeLeft",".item",function(){
-				index++;
-				if ( index < $(".item").length) {
-					
-					$(this).parent().css('left',-300*index+"px");
-					//ulist.animate({left: -uwidth}, 1000);
-					$(this).parent().animate({'left':-300*index+"px"},3000);
-
-				}else{
-					$(this).parent().css('left','0px');
-					index = 0;
-				}; 
-			})
-			$(".list").bind("swipeRight",".item",function(){
-				index--;
-				if ( index < 0) {
-					index = $(".item").length - 1;                
-				}
-				$(this).parent().animate({'left':-300*index+"px"},3000);
-			})
-
-
-
-
-
-
-		})
-
-
-	</script>
-</body>
-</html>
+<!doctype html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8"> 
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    <title>Document</title>  
+    <style>  
+        *{  
+            padding: 0;  
+            margin: 0;  
+        }  
+        ul li{list-style-type: none}  
+        #banner{  
+            width: 800px;  
+            height: 400px;  
+            overflow: hidden;  
+        }  
+        #banner ul{  
+            width: 7680px;  
+            overflow: hidden;  
+        }  
+        #banner ul>li{  
+            width: 800px;  
+            height: 400px;  
+            float: left;  
+        }  
+        img{  
+            max-width: 100%;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <div id="banner">  
+        <ul>  
+            <li><img src="img/bgsucai04.jpg" alt="" width="1920px" height="400px"/></li>  
+            <li><img src="img/bgsucai05.jpg" alt="" width="1920px" height="400px"/></li>  
+            <li><img src="img/bgsucai06.jpg" alt="" width="1920px" height="400px"/></li>  
+            <li><img src="img/bgsucai09.jpg" alt="" width="1920px" height="400px"/></li>  
+        </ul>  
+    </div>  
+    <input type="button" value="left" class="left"/>  
+    <input type="button" value="right" class="right"/>  
+  
+  
+    <script src="js/jquery-2.2.1.min.js"></script>  
+    <script>  
+        $(function () {  
+            $('.right').click(function () {  
+                $("#banner ul").animate({marginLeft:"-800px"},600, function () {  
+                    $("#banner ul>li").eq(0).appendTo($("#banner ul"));  
+                    $("#banner ul").css('marginLeft','0px');  
+                });  
+            })  
+            $('.left').click(function () {  
+                $("#banner ul").css('marginLeft','-800px');  
+                $("#banner ul>li").eq(3).prependTo($("#banner ul"));  
+                $("#banner ul").animate({marginLeft:"0px"},600);  
+            })  
+        })  
+    </script>  
+</body>  
+</html>  
