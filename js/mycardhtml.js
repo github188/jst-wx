@@ -10,19 +10,46 @@ $(function(){
 				$(".listBox").bind("swipeLeft",".list",function(e){
 					e.preventDefault();
 					currentIndex++; 
-					if(currentIndex == $(".list").length){
-						currentIndex = 1;
+					if(currentIndex < $(".list").length){
+						//currentIndex = 1;
 						//oUL.style.left = "0px";
-						left ="0rem";
+						//left ="0rem";
+						left = currentIndex * 5.8 * -1 +"rem";
+						$(this).parent().animate({"left":left}, 300);
+					}else{
+						$(this).parent().animate({"left":0}, 300);
+						currentIndex = 0;
 					}
-					left = currentIndex * 5.8 * -1 +"rem";
+					
+
+					// index++;
+					// if ( index< llength) {
+					// 	uwidth = lwidth *index;
+					// 	ulist.css('left',-uwidth);
+					// 	//ulist.animate({left: -uwidth}, 1000);
+
+					// }else{
+					// 	ulist.css('left','0px');
+					// 	index = 0;
+					// }; 
+
+
+
+
+
+
+
+
+
 					//currentIndex--;
 					// if(currentIndex == -1){
 					// 	currentIndex = 4;
 					// 	var left = -(currentIndex + 1) * 5.8 * -1 + "rem";
 					// }
 					//var left = -($(this).index() + 1)*5.8 + "rem";
-					$(this).parent().animate({"left":left,"opacity":1}, 300)
+					// $(this).parent().animate({"left":left}, 300);
+					// $(this).animate({"opacity":0}, 300);
+					// $(this).siblings().css("opacity",1);
 					// if(currentIndex == -($(".list").length)){
 					// 	$(this).parent().css("left",0)
 					// 	currentIndex = 0;

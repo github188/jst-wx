@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +16,9 @@
     </script>
 	<meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
 	<title>绑卡</title>
-	<link rel="stylesheet" type="text/css" href="../new-css/bindCard.css">
-	<script type="text/javascript" src="../js/fastclick.js"></script>
-	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/2016css_v1.0/bindCard.css">
+	<script type="text/javascript" src="../js/2016js_v1.0/fastclick.js"></script>
+	<script type="text/javascript" src="../js/2016js_v1.0/zepto.min.js"></script>
 </head>
 <body>
 	<header class="bindHead">
@@ -72,28 +74,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!--<div class="keyBox">
-		<div class="numKey">
-			<input class="key" type="button" value="1">
-			<input class="key" type="button" value="2">
-			<input class="key" type="button" value="3">
-			<input class="key" type="button" value="4">
-			<input class="key" type="button" value="5">
-			<input class="key" type="button" value="6">
-			<input class="key" type="button" value="7">
-			<input class="key" type="button" value="8">
-			<input class="key" type="button" value="9">
-			<input class="key null" type="button" value=" ">
-			<input class="key" type="button" value="0">
-			<input class="key null" type="button" value=" ">
-		</div>
-		<div class="otherKey">
-			<input class="key del" type="button" value="x">
-			<input class="key finish" type="button" value="完成">
-		</div>
-	</div>-->
-
-	<script type="text/javascript" src="../js/bindcardhtml.js"></script>
+	<script type="text/javascript" src="../js/2016js_v1.0/bindCard.js"></script>
 </body>
 </html>

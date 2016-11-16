@@ -38,3 +38,63 @@ function IdentityCodeValid(code){
   return pass;
 }
 
+//密码校验
+function CheckedPwd(fun1,fun2){
+  var keyVal = "";//用于记录前6点击的数字
+  var count = 0;//用于记录小黑点显示
+    //键盘事件
+    $(".keyBox").bind("click",".key",function(){
+      if($(this).index() == 9){
+        keyVal = keyVal;
+        console.log(keyVal)
+      }else if($(this).index() == 11){
+        count--;
+        if(count < 0){
+          count = 0;
+        }
+        $(".btn").removeClass("btnOn");
+        //小黑点
+        $(".box").eq(count).removeClass("keyOn");
+
+        if(keyVal.length == 0){
+          keyVal = "";
+        }else{
+          keyVal = keyVal.substring(0,keyVal.length-1);
+        }
+        //console.log(keyVal)
+      }else{
+        if(keyVal.length >= 6){
+          keyVal = $(this).find("i").text();
+          for(var a=0;a<6;a++){
+            $(".box").eq(a).removeClass("keyOn");
+          }
+          count = 0;
+          $(".box").eq(count).addClass("keyOn");
+        }else{
+          keyVal = keyVal.concat($(this).find("i").text());
+          //小黑点
+          $(".box").eq(count).addClass("keyOn");
+        }
+
+        count++;
+        if(count > 6 ){
+          count = 0; 
+        }
+        
+        //确定按钮状态事件
+        if(keyVal.length == 6){
+          //$(".btn").addClass("btnOn");
+          //pwd = keyVal;
+          fun1(keyVal);
+
+        }else{
+          //$(".btn").removeClass("btnOn");
+          fun2();
+        }
+        
+        //console.log(keyVal)
+      }
+      
+    })
+
+}

@@ -12,6 +12,7 @@
 	-ms-user-select: none;
 	user-select: none;
 	box-sizing:border-box;
+	font-family:"微软雅黑";
 }
 html{
 	
@@ -84,6 +85,7 @@ html,body{
 			padding:0.3rem 0rem;
 			box-sizing:border-box;
 			display:flex;
+			position:relative;
 			span{
 				width: 0.8rem;
 				box-sizing:border-box;
@@ -95,17 +97,35 @@ html,body{
 				padding:0 0.24rem;
 				font-size:28px;
 				box-sizing:border-box;
+				flex:1;
+			}
+			i{
+				display: none;
+				width:0.44rem;
+				height:0.44rem;
+				background-image:url(../images/public/X2.png);
+				background-size:100% 100%;
+				background-repeat:no-repeat;
+				background-position:center;
+				position:absolute;
+				top: 0.3rem;
+				right: 0; 
+			}
+			.iOn{
+				display: inline-block;
 			}
 		}
 		p{
 			font-size:24px;
 			color:#ea5920;
-			padding-left:1.05rem;
 			box-sizing:border-box;
-			line-height: 0.38rem;
+			line-height: 0.4rem;
+			padding:0.1rem 0 0.1rem 1.05rem;
+			display: none;
 		}
 		.pOn{
 			margin-top:-0.3rem;
+			display: block;
 		}
 	
 	}
@@ -125,6 +145,7 @@ html,body{
 			padding:0 0.24rem;
 			font-size:28px;
 			box-sizing:border-box;
+			flex:1;
 		}
 	}
 	.forgetTips{
@@ -157,8 +178,8 @@ html,body{
 
 /*确定按钮*/
 .comfirmBtn{
-	position:fixed;
-	bottom:0.4rem;
+	position:absolute;
+	top:8.44rem;
 	left:0;
 	width:100%;
 	text-align:center;
@@ -203,13 +224,15 @@ html,body{
 		margin-top:1.1rem;
 		text-align: right;
 		background:#ffffff;
-		border-bottom:0.01rem solid #d1d1d1; 
+		border-bottom:0.01rem solid #d1d1d1;
+		border-radius:0.1rem 0.1rem 0 0; 
 		span{
 			color:#333333;
 			display: inline-block;
 			box-sizing:border-box;
 			width:60%;
 			text-align: center;
+			font-weight: bold;
 		}
 		i{
 			display: inline-block;
@@ -217,7 +240,7 @@ html,body{
 			height: 0.44rem;
 			width: 0.44rem;
 			border-radius:50%;
-			background-image:url("../images/public/X2.png");
+			background-image:url("../images/public/X1.png");
 			background-repeat:no-repeat;
 			background-size:100% 100%;
 			vertical-align: middle;
@@ -233,8 +256,9 @@ html,body{
 		line-height: 0.42rem;
 		padding:0.26rem 0.42rem 0;
 		background:#ffffff;
+		color:#666666;
 		span{
-
+			
 		}
 	}
 	.tipsImg{
@@ -245,7 +269,7 @@ html,body{
 			display: inline-block;
 			width:100%;
 			height:3rem;
-			background:url("../images/tips.jpg") no-repeat 100% 100%;
+			background:url("../images/bindCard/tips.png") no-repeat 100% 100%;
 		}
 	}
 	.tips2{
@@ -254,6 +278,8 @@ html,body{
 		line-height: 0.42rem;
 		padding:0.26rem 0.42rem;
 		background:#ffffff;
+		border-radius:0 0 0.1rem 0.1rem;
+		color:#666666;
 		span{
 			i{
 				color:#ea5920;

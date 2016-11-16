@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +16,8 @@
     </script>
 	<meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
 	<title>密码操作</title>
-	<script type="text/javascript" src="../js/zepto.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../new-css/password.css">
-	<script type="text/javascript" src="../js/main.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/zepto.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/password.css">
 </head>
 <body>
 	<header>
@@ -119,7 +120,7 @@
 			<span>2.如已修改并忘记卡密码，<i>请点此找回密码。</i></span>
 		</div>
 	</div>
-	<script type="text/javascript" src="../js/passwordhtml.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/passwordhtml.js"></script>
 
 </body>
 </html>

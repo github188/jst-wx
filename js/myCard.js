@@ -348,6 +348,7 @@ $(function(){
 						})				
 
 					}else if(operType == 2){//解绑
+						
 						carry = {
 							openId:userInfo.openId,
 							carryMes:"您即将解绑尾号"+userInfo.list[$(".index").index()].usercode.substring(15)+"的捷顺通卡",

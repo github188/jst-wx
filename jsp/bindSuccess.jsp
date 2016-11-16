@@ -1,12 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
 	<title>绑卡成功</title>
-	<link rel="stylesheet" type="text/css" href="../new-css/bindSuccess.css">
-	<script type="text/javascript" src="../js/fastclick.js"></script>
-	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/2016css_v1.0/bindSuccess.css">
+	<script type="text/javascript" src="../js/2016js_v1.0/fastclick.js"></script>
+	<script type="text/javascript" src="../js/2016js_v1.0/zepto.min.js"></script>
 </head>
 <body>
 	<section class="bigBox">
@@ -39,7 +41,7 @@
 			FastClick.attach(document.body);
 
 			$(".btn button").on("click",function(){
-				location.href = "../html/password.html";
+				//location.href = "../html/password.html";
 			})
 
 		})

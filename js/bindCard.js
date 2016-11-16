@@ -7,6 +7,11 @@ $(function(){
 	//卡号输入验证
 	var count = 0;//记录空格标志
 	var cardNum = "";//记录卡号
+
+	//有缓存的时候
+
+
+
 	$(".cardId input").bind("keyup",function(){
 		$(".cardTitle").addClass("cardTitleOn");
 		//只能输入数字
@@ -189,48 +194,48 @@ $(function(){
 		// $(".alertBox").addClass("alertBoxOn");
 		// $(".pwdError").addClass("btnOn");
 		//location.href = "bindSuccess.html";
-		// $.ajax({
-		// 		url:"./bindJstCard.execute",
-		// 		type:"POST",
-		// 		data:{
-		// 			openId:cardInfo.openId,
-		// 			cardCode:cardNum,
-		// 			password:$(".cardPwd input").val(),
-		// 			accounttype:"2"
-		// 		},
-		// 		success:function(data){
-		// 			var info = JSON.parse(data);
-		// 			if(info.resCode == "WX000"){
-		// 				location.href = "./bindSuccess.jsp?"+cardInfo.openId;
-		// 			}else if(info.resCode == "WX007"){
-		// 				$(".alertBox").addClass("alertBoxOn");
-		// 				$(".alertMes span").text(info.msgContent);
-		// 				$(".longtime").addClass("btnOn");
-		// 				$(".pwdError").removeClass("btnOn");	
-		// 			}else if(info.resCode == "WX002"){
-		// 				$(".alertBox").addClass("alertBoxOn");
-		// 				$(".alertMes span").text(info.msgContent);
-		// 				$(".longtime").addClass("btnOn");
-		// 				$(".pwdError").removeClass("btnOn");
-		// 			}else if(info.resCode == "WX008"){
-		// 				$(".alertBox").addClass("alertBoxOn");
-		// 				$(".alertMes span").text(info.msgContent);
-		// 				$(".longtime").removeClass("btnOn");
-		// 				$(".pwdError").addClass("btnOn");
-		// 			}
+		$.ajax({
+				url:"./bindJstCard.execute",
+				type:"POST",
+				data:{
+					openId:cardInfo.openId,
+					cardCode:cardNum,
+					password:$(".cardPwd input").val(),
+					accounttype:"2"
+				},
+				success:function(data){
+					var info = JSON.parse(data);
+					if(info.resCode == "WX000"){
+						location.href = "./bindSuccess.jsp?"+cardInfo.openId;
+					}else if(info.resCode == "WX007"){
+						$(".alertBox").addClass("alertBoxOn");
+						$(".alertMes span").text(info.msgContent);
+						$(".longtime").addClass("btnOn");
+						$(".pwdError").removeClass("btnOn");	
+					}else if(info.resCode == "WX002"){
+						$(".alertBox").addClass("alertBoxOn");
+						$(".alertMes span").text(info.msgContent);
+						$(".longtime").addClass("btnOn");
+						$(".pwdError").removeClass("btnOn");
+					}else if(info.resCode == "WX008"){
+						$(".alertBox").addClass("alertBoxOn");
+						$(".alertMes span").text(info.msgContent);
+						$(".longtime").removeClass("btnOn");
+						$(".pwdError").addClass("btnOn");
+					}
 					
-		// 			console.log(info);
+					console.log(info);
 					
-		// 		},
-		// 		error:function(error){
-		// 			console.log("服务未开启")
-		// 		}
-		// 	})
+				},
+				error:function(error){
+					console.log("服务未开启")
+				}
+			})
 	})
 
 	//错误确认按钮
 	$(".longtime span").bind("click",function(){
-		console.log(5464646)
+		//console.log(5464646)
 		$(".alertBox").removeClass("alertBoxOn");
 	})
 	//错误重试按钮

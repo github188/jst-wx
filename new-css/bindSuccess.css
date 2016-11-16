@@ -11,6 +11,7 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-family: "微软雅黑";
 }
 
 html, body {
@@ -38,9 +39,12 @@ html, body {
 }
 .bigBox .iconBox i {
   display: inline-block;
-  width: 1.68rem;
-  height: 1.26rem;
-  background: url("../images/bindSuccessIcon.jpg") no-repeat 100% 100%;
+  width: 1.52rem;
+  height: 1.12rem;
+  background-image: url("../images/public/bkcg.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
 }
 .bigBox .result {
   padding-top: 0.26rem;
@@ -49,25 +53,33 @@ html, body {
 .bigBox .result span {
   display: block;
   font-size: 34px;
+  font-weight: bold;
+  color: #333333;
 }
 .bigBox .tips {
-  padding-top: 0.1rem;
+  padding-top: 0.22rem;
   text-align: center;
-  font-size: 24px;
   line-height: 0.4rem;
+  color: #333333;
+}
+.bigBox .tips span {
+  display: inline-block;
+  width: 2.6rem;
+  font-size: 24px;
 }
 .bigBox .btn {
-  margin-top: 2.06rem;
+  margin-top: 2.18rem;
+  text-align: center;
 }
 .bigBox .btn button {
-  width: 100%;
+  width: 5.6rem;
   border: 0;
   font-size: 32px;
-  height: 0.9rem;
+  height: 0.84rem;
   color: #ea5920;
   border: 0.01rem solid #ea5920;
   background: #ffffff;
-  border-radius: 0.1rem;
+  border-radius: 0.4rem;
   outline: none;
 }
 

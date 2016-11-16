@@ -51,7 +51,7 @@ html,body{
 		.index{
 			z-index:3;
 		}
-		display: flex;
+		
 		.list{
 			width:5.8rem;
 			height:3.28rem;
@@ -60,7 +60,7 @@ html,body{
 			background-repeat:no-repeat;
 			background-size:100% 100%;
 			background-position:center;
-			
+			float: left;
 			.cardNum{
 				position:absolute;
 				top:1.34rem;

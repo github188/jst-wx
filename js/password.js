@@ -1,5 +1,3 @@
-//var openId='${param.openId}'; 
-
 Zepto(function($){
 	var memoryInfo = JSON.parse(sessionStorage.getItem("memory"));
 	console.log(memoryInfo)
@@ -10,13 +8,67 @@ Zepto(function($){
 		$(".cardTips").text("您即将解绑尾号"+memoryInfo.cardNo.substring(0,4)+"的捷顺通卡");
 		$(".pTips").text("请输入卡密码");
 		$(".pwdBtn").addClass("pwdBtnOn");
+		//键盘事件
+		$(".keyBox").bind("click",".key",function(){
+			if($(this).index() == 9){
+				keyVal = keyVal;
+				console.log(keyVal)
+			}else if($(this).index() == 11){
+				count--;
+				if(count < 0){
+					count = 0;
+				}
+				$(".btn").removeClass("btnOn");
+				//小黑点
+				$(".box").eq(count).removeClass("keyOn");
 
+				if(keyVal.length == 0){
+					keyVal = "";
+				}else{
+					keyVal = keyVal.substring(0,keyVal.length-1);
+				}
+				console.log(keyVal)
+			}else{
+				if(keyVal.length >= 6){
+					keyVal = $(this).find("i").text();
+					for(var a=0;a<6;a++){
+						$(".box").eq(a).removeClass("keyOn");
+					}
+					count = 0;
+					$(".box").eq(count).addClass("keyOn");
+				}else{
+					keyVal = keyVal.concat($(this).find("i").text());
+					//小黑点
+					$(".box").eq(count).addClass("keyOn");
+				}
+
+				count++;
+				if(count > 6 ){
+					count = 0; 
+				}
+				
+				//确定按钮状态事件
+				if(keyVal.length == 6){
+					$(".btn").addClass("btnOn");
+				}else{
+					$(".btn").removeClass("btnOn");
+				}
+				
+				console.log(keyVal)
+			}
+			
+		})
+	}else if(memoryInfo.type == "loss"){//挂失
+		$(".cardTips").text("您即将挂失尾号"+memoryInfo.cardNo.substring(0,4)+"的捷顺通卡");
+		$(".pTips").text("请输入卡密码");
+		$(".pwdBtn").addClass("pwdBtnOn");
 		//键盘事件
 		// $(".keyBox").bind("click",".key",function(){
 		// 	if($(this).index() == 9){
 		// 		keyVal = keyVal;
 		// 		console.log(keyVal)
 		// 	}else if($(this).index() == 11){
+
 		// 		count--;
 		// 		if(count < 0){
 		// 			count = 0;
@@ -61,68 +113,10 @@ Zepto(function($){
 		// 	}
 			
 		// })
-
 		CheckedPwd(function(pwd){
 			$(".btn").addClass("btnOn");
-			console.log(pwd+"=====");	
 		},function(){
 			$(".btn").removeClass("btnOn");
-		})
-
-	}else if(memoryInfo.type == "loss"){//挂失
-		$(".cardTips").text("您即将挂失尾号"+memoryInfo.cardNo.substring(0,4)+"的捷顺通卡");
-		$(".pTips").text("请输入卡密码");
-		$(".pwdBtn").addClass("pwdBtnOn");
-		//键盘事件
-		$(".keyBox").bind("click",".key",function(){
-			if($(this).index() == 9){
-				keyVal = keyVal;
-				console.log(keyVal)
-			}else if($(this).index() == 11){
-
-				count--;
-				if(count < 0){
-					count = 0;
-				}
-				$(".btn").removeClass("btnOn");
-				//小黑点
-				$(".box").eq(count).removeClass("keyOn");
-
-				if(keyVal.length == 0){
-					keyVal = "";
-				}else{
-					keyVal = keyVal.substring(0,keyVal.length-1);
-				}
-				console.log(keyVal)
-			}else{
-				if(keyVal.length >= 6){
-					keyVal = $(this).find("i").text();
-					for(var a=0;a<6;a++){
-						$(".box").eq(a).removeClass("keyOn");
-					}
-					count = 0;
-					$(".box").eq(count).addClass("keyOn");
-				}else{
-					keyVal = keyVal.concat($(this).find("i").text());
-					//小黑点
-					$(".box").eq(count).addClass("keyOn");
-				}
-
-				count++;
-				if(count > 6 ){
-					count = 0; 
-				}
-				
-				//确定按钮状态事件
-				if(keyVal.length == 6){
-					$(".btn").addClass("btnOn");
-				}else{
-					$(".btn").removeClass("btnOn");
-				}
-				
-				console.log(keyVal)
-			}
-			
 		})
 
 	}else if(memoryInfo.type == "reset"){//重置密码
@@ -225,58 +219,13 @@ Zepto(function($){
 			
 		})
 	}else if(memoryInfo.type == "recharge"){//充值输入密码支付
-		$(".reTips").text("您输入卡号***"+memoryInfo.cardNo.substring(0,4)+"的卡密码");
+		$(".reTips").text("您输入卡号***"+memoryInfo.cardNo.substring(15)+"的卡密码");
 		$(".rechargeTips").addClass("rechargeTipsOn");
-		//键盘事件
-		$(".keyBox").bind("click",".key",function(){
-			if($(this).index() == 9){
-				keyVal = keyVal;
-				console.log(keyVal)
-			}else if($(this).index() == 11){
+		//键盘函数
+		CheckedPwd(function(pwd){
 
-				count--;
-				if(count < 0){
-					count = 0;
-				}
-				$(".btn").removeClass("btnOn");
-				//小黑点
-				$(".box").eq(count).removeClass("keyOn");
+		},function(){
 
-				if(keyVal.length == 0){
-					keyVal = "";
-				}else{
-					keyVal = keyVal.substring(0,keyVal.length-1);
-				}
-				console.log(keyVal)
-			}else{
-				if(keyVal.length >= 6){
-					keyVal = $(this).find("i").text();
-					for(var a=0;a<6;a++){
-						$(".box").eq(a).removeClass("keyOn");
-					}
-					count = 0;
-					$(".box").eq(count).addClass("keyOn");
-				}else{
-					keyVal = keyVal.concat($(this).find("i").text());
-					//小黑点
-					$(".box").eq(count).addClass("keyOn");
-				}
-
-				count++;
-				if(count > 6 ){
-					count = 0; 
-				}
-				
-				//确定按钮状态事件
-				if(keyVal.length == 6){
-					//$(".btn").addClass("btnOn");
-				}else{
-					//$(".btn").removeClass("btnOn");
-				}
-				
-				console.log(keyVal)
-			}
-			
 		})
 
 		//密码提示
