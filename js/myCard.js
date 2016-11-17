@@ -1,7 +1,7 @@
 $(function(){
 	var userInfo = {};
 	userInfo.openId = openId;
-	var cardId = "";
+	var cardId = "";//记录卡号
 
 	//获取卡列表
 	$.ajax({
@@ -19,7 +19,8 @@ $(function(){
 			var index = "";
 			var state = "";
 			var setMain = "";
-			var operType = 0;
+			var operType = 0;//记录操作类型
+			var accounttype = "";//记录卡类型
 			if(data.resCode == "WX001"){//未绑卡
 
 			}else if(data.list.length == 1){//只绑一张卡
@@ -33,18 +34,21 @@ $(function(){
 
 			}else{//绑多张卡
 				userInfo.list = data.list;
-				
-				
-				for(var i = 0 ;i < data.list.length;i++){
+				//初始显示余额
+				$(".acc_balance span").text(data.list[0].acctBal);
+				$(".ele_balance span").text(data.list[0].cardBal);
+				//初始化数据
+				cardId = data.list[0].usercode;
+				accounttype = data.list[0].accounttype;
+
+				for(var j = 0 ;j < data.list.length;j++){
 					
-					if(data.list[i].valid == "1"){//主卡
+					if(data.list[j].valid == "1"){//主卡
 						index = "index";
 						state = "mainState";
 						normal = "normalCard1";
 						asMainOn = "asMain";
-						//初始显示余额
-						$(".acc_balance span").text(data.list[i].acctBal);
-						$(".ele_balance span").text(data.list[i].cardBal);
+						
 					}else{//非主卡
 						index = "";
 						state = "";
@@ -59,7 +63,7 @@ $(function(){
 						}	
 					}
 					listHtml += '<li class="list '+normal+' '+index+'">'+
-									'<span class="cardNum">'+data.list[i].usercode.substring(0,4)+'** *********'+data.list[i].usercode.substring(15)+'</span>'+
+									'<span class="cardNum">'+data.list[j].usercode.substring(0,4)+'** *********'+data.list[j].usercode.substring(15)+'</span>'+
 									'<span class="bill">账单&gt;</span>'+
 									'<i class="stateIcon '+state+'"></i>'+
 									'<span class="'+asMainOn+'">设为主卡</span>'+
@@ -67,222 +71,117 @@ $(function(){
 					count++;
 
 					//导航条
-					if(i == 0){
+					if(j == 0){
 						navHtml = '<li class="on"></li>';
 					}else{
 						navHtml += '<li></li>'
 					}
-					
-					
 				}
 				
 				$(".listBox").html(listHtml);
 				$(".navlist").html(navHtml);
 				console.log(userInfo);
+				var i = 0;//计数器
+                var clone = $(".list").first().clone();//克隆第一张图片
+                $(".listBox").append(clone);//复制到列表最后
+                var size = $(".list").size();
+                $(".list").eq(0).addClass("index");
 
 				//向左滑
-				var navCount = 0;
 				$(".listBox").bind("swipeLeft",".list",function(e){
 					e.preventDefault();
+					//轮播图
+					i++;
+					if (i == size) {
+                        $(".listBox").css({ left: 0 });
+                        i = 1;
+                    }
+                    $(".listBox").animate({ left: -i * 5.8+"rem" }, 500);
+
+					$(".list").eq(i).addClass("index");
+					$(".list").eq(i).siblings().removeClass("index");
 					//导航条
-					navCount++;
-					$(".navlist li").eq(navCount).addClass("on");
-					$(".navlist li").eq(navCount).siblings().removeClass("on");
-					if(navCount >= $(".navlist li").length-1){
-						navCount = -1;
-					}
-					console.log(navCount);
+					if (i == size - 1) {
+                        $(".navlist li").eq(0).addClass("on").siblings().removeClass("on");
+                    } else {
+                        $(".navlist li").eq(i).addClass("on").siblings().removeClass("on");
+                    }
 
-					$(".list").eq(0).removeClass("index");
-					$(this).animate({"z-index":1,"opacity":0},300);
-					if($(this).index() != $(".list").length-1){
-						$(".list").eq($(this).index()+1).addClass("index");
-						$(".list").eq($(this).index()+1).siblings().removeClass("index");
-						//切换动画
-						$(".list").eq($(this).index()+1).animate({"z-index":5,"opacity":1},300);
-						
-						//辨别是否为异常卡,显示设为主卡标志
-						if($(".list").eq($(this).index()+1).hasClass("gsCard") || $(".list").eq($(this).index()+1).hasClass("ycCard") || $(".list").eq($(this).index()+1).find(".stateIcon").hasClass("mainState")){
-							$(".list").eq($(this).index()+1).find(".asMain").removeClass("asMainOn");
-						}else{
-							$(".list").eq($(this).index()+1).find(".asMain").addClass("asMainOn");
-						}
-						//充值按钮不可选
-						if($(".list").eq($(this).index()+1).hasClass("gsCard") || $(".list").eq($(this).index()+1).hasClass("ycCard")){
-							$(".btn").addClass("ycBtn");
-							$(".btn").removeClass("btnOn");
-							//非正常卡不显示解绑、挂失
-							$(".loss").addClass("operOff");
-							$(".reset").addClass("operOff");
-						}else{
-							$(".btn").removeClass("ycBtn");
-							$(".btn").addClass("btnOn");
-							//正常卡显示解绑、挂失
-							$(".loss").removeClass("operOff");
-							$(".reset").removeClass("operOff");
-						}
-						//是否显示挂失提示信息
-						if($(".list").eq($(this).index()+1).hasClass("gsCard")){
-							$(".gsTips").addClass("gsTipsOn");
-						}else{
-							$(".gsTips").removeClass("gsTipsOn");
-						}
+                    //余额显示
+                    if(i == data.list.length){
+                    	$(".acc_balance span").text(data.list[0].acctBal);
+                    	$(".ele_balance span").text(data.list[0].cardBal);
+                    	cardId = data.list[0].usercode;
+                    	accounttype = data.list[0].accounttype;
+                    }else{
+                    	$(".acc_balance span").text(data.list[i].acctBal);
+                    	$(".ele_balance span").text(data.list[i].cardBal);
+                    	cardId = data.list[i].usercode;
+                    	accounttype = data.list[i].accounttype;
+                    }
 
-						//余额展示
-						$(".acc_balance span").text(userInfo.list[$(this).index()+1].acctBal);
-						$(".ele_balance span").text(userInfo.list[$(this).index()+1].cardBal);
-
-					}else{
-						$(".list").eq(0).addClass("index");
-						$(".list").eq(0).siblings().removeClass("index");
-						//切换动画
-						$(".list").eq(0).animate({"z-index":5,"opacity":1},300);
-	
-						$(".list").eq(0).removeClass("asMainOn");
-						//充值按钮不可选
-						if($(".list").eq(0).hasClass("gsCard") || $(".list").eq(0).hasClass("ycCard")){
-							$(".btn").addClass("ycBtn");
-							$(".btn").removeClass("btnOn");
-							//非正常卡不显示解绑、挂失
-							$(".loss").addClass("operOff");
-							$(".reset").addClass("operOff");
-						}else{
-							$(".btn").removeClass("ycBtn");
-							$(".btn").addClass("btnOn");
-							//正常卡显示解绑、挂失
-							$(".loss").removeClass("operOff");
-							$(".reset").removeClass("operOff");
-						}
-						//是否显示挂失提示信息
-						if($(".list").eq(0).hasClass("gsCard")){
-							$(".gsTips").addClass("gsTipsOn");
-						}else{
-							$(".gsTips").removeClass("gsTipsOn");
-						}
-
-						//余额展示
-						//余额展示
-						$(".acc_balance span").text(userInfo.list[0].acctBal);
-						$(".ele_balance span").text(userInfo.list[0].cardBal);
-
-					}
+                    //充值按钮状态
+                    if($(".list").eq(i).hasClass("ycCard") || $(".list").eq(i).hasClass("gsCard")){
+                    	$(".btn").removeClass("btnOn");
+                    }else{
+                    	$(".btn").addClass("btnOn");
+                    }
 
 
 					console.log("向左滑"+$(this).index())
+					console.log("i"+i);
 				})
-
 
 				//向右滑
 				$(".listBox").bind("swipeRight",".list",function(e){
 					e.preventDefault();
+					//轮播图
+					i--;
+					if (i == -1) {
+                        $(".listBox").css({ left: -(size - 1) * 5.8+"rem" });
+                        i = size - 2;
+                    }
+                    $(".listBox").animate({ left: -i * 5.8 +"rem"}, 500);
+
+                    $(".list").eq(i).addClass("index");
+					$(".list").eq(i).siblings().removeClass("index");	
 					//导航条
-					navCount --;
-					if(navCount <= -1){
-						navCount = $(".navlist li").length - 1;
-					}
-					$(".navlist li").eq(navCount).addClass("on");
-					$(".navlist li").eq(navCount).siblings().removeClass("on");
-					if(navCount == 0){
-						navCount = 0;
-					}
-					console.log(navCount);
-					
+					if (i == size - 1) {
+                        $(".navlist li").eq(0).addClass("on").siblings().removeClass("on");
+                    } else {
+                        $(".navlist li").eq(i).addClass("on").siblings().removeClass("on");
+                    }
+                   	//余额显示
+                    if(i == data.list.length-1){
+                    	$(".acc_balance span").text(data.list[data.list.length-1].acctBal);
+                    	$(".ele_balance span").text(data.list[data.list.length-1].cardBal);
+                    	cardId = data.list[data.list.length-1].usercode;
+                    	accounttype = data.list[data.list.length-1].accounttype;
+                    }else{
+                    	$(".acc_balance span").text(data.list[i].acctBal);
+                    	$(".ele_balance span").text(data.list[i].cardBal);
+                    	cardId = data.list[i].usercode;
+                    	accounttype = data.list[i].accounttype;
+                    }
 
+                    //充值按钮状态
+                    if($(".list").eq(i).hasClass("ycCard") || $(".list").eq(i).hasClass("gsCard")){
+                    	$(".btn").removeClass("btnOn");
+                    }else{
+                    	$(".btn").addClass("btnOn");
+                    }
 
-					$(".list").eq(0).removeClass("index");
-
-					$(this).animate({"z-index":1,"opacity":0},300);
-					if($(this).index() != 0){
-						$(".list").eq($(this).index()-1).addClass("index");
-						$(".list").eq($(this).index()-1).siblings().removeClass("index");
-						//切换动画
-						$(".list").eq($(this).index()-1).animate({"z-index":5,"opacity":1},300);
-						//导航条
-						// $(".navlist li").eq($(this).index()-1).addClass("on");
-						// $(".navlist li").eq($(this).index()-1).siblings().removeClass("on");
-						//辨别是否为异常卡,是否显示设为主卡标志
-						if($(".list").eq($(this).index()-1).hasClass("gsCard") || $(".list").eq($(this).index()-1).hasClass("ycCard") || $(".list").eq($(this).index()-1).find(".stateIcon").hasClass("mainState")){
-							$(".list").eq($(this).index()-1).find(".asMain").removeClass("asMainOn");
-						}else{
-							$(".list").eq($(this).index()-1).find(".asMain").addClass("asMainOn");
-						}
-						//充值按钮不可选
-						if($(".list").eq($(this).index()-1).hasClass("gsCard") || $(".list").eq($(this).index()-1).hasClass("ycCard")){
-							$(".btn").addClass("ycBtn");
-							$(".btn").removeClass("btnOn");
-							//非正常卡不显示解绑、挂失
-							$(".loss").addClass("operOff");
-							$(".reset").addClass("operOff");
-						}else{
-							$(".btn").removeClass("ycBtn");
-							$(".btn").addClass("btnOn");
-							//正常卡显示解绑、挂失
-							$(".loss").removeClass("operOff");
-							$(".reset").removeClass("operOff");
-						}
-						//是否显示挂失提示信息
-						if($(".list").eq($(this).index()-1).hasClass("gsCard")){
-							$(".gsTips").addClass("gsTipsOn");
-						}else{
-							$(".gsTips").removeClass("gsTipsOn");
-						}
-
-						//余额展示
-						$(".acc_balance span").text(userInfo.list[$(this).index()-1].acctBal);
-						$(".ele_balance span").text(userInfo.list[$(this).index()-1].cardBal);
-
-					}else{
-						$(".list").eq($(".list").length-1).addClass("index");
-						$(".list").eq($(".list").length-1).siblings().removeClass("index");
-						//切换动画
-						$(".list").eq($(".list").length-1).animate({"z-index":5,"opacity":1},300);
-						//导航条
-						// $(".navlist li").eq($(".navlist li").length-1).addClass("on");
-						// $(".navlist li").eq($(".navlist li").length-1).siblings().removeClass("on");
-						//辨别是否为异常卡,是否显示设为主卡标志
-						if($(".list").eq($(".list").length-1).hasClass("gsCard") || $(".list").eq($(".list").length-1).hasClass("ycCard") || $(".list").eq($(".list").length-1).find(".stateIcon").hasClass("mainState")){
-							$(".list").eq($(".list").length-1).find(".asMain").removeClass("asMainOn");
-							
-						}else{
-							$(".list").eq($(".list").length-1).find(".asMain").addClass("asMainOn");
-							
-						}
-						//充值按钮不可选
-						if($(".list").eq($(".list").length-1).hasClass("gsCard") || $(".list").eq($(".list").length-1).hasClass("ycCard")){
-							$(".btn").addClass("ycBtn");
-							$(".btn").removeClass("btnOn");
-							//非正常卡不显示解绑、挂失
-							$(".loss").addClass("operOff");
-							$(".reset").addClass("operOff");
-						}else{
-							$(".btn").removeClass("ycBtn");
-							$(".btn").addClass("btnOn");
-							//正常卡显示解绑、挂失
-							$(".loss").removeClass("operOff");
-							$(".reset").removeClass("operOff");
-						}
-						//是否显示挂失提示信息
-						if($(".list").eq($(".list").length-1).hasClass("gsCard")){
-							$(".gsTips").addClass("gsTipsOn");
-						}else{
-							$(".gsTips").removeClass("gsTipsOn");
-						}
-
-						//余额展示
-						$(".acc_balance span").text(userInfo.list[$(".list").length-1].acctBal);
-						$(".ele_balance span").text(userInfo.list[$(".list").length-1].cardBal);
-					}
-					console.log("向右滑"+$(this).index())
+					console.log("向右滑"+$(this).index());
+					console.log("i"+i);
 				})
 
 				//设为主卡
 				var setMain = "";
 				$(".asMain").bind("tap",function(){
 					if($(this).hasClass("asMainOn")){
-						operType = 1;
+						operType = 1;//1为设置主卡
 						$(".alertBox").addClass("alertBoxOn");
 						$(".alertTips p").text("设置尾号"+$(this).parent().find(".cardNum").text().substring(16)+"的捷顺通卡为主卡吗？")
-						cardId = userInfo.list[$(".index").index()].usercode;
 						setMain = $(this).parent();
 						console.log(setMain);
 					}
@@ -291,9 +190,8 @@ $(function(){
 
 
 				//解绑
-				
 				$(".unbind").bind("tap",function(){
-					operType = 2;
+					operType = 2;//2为解绑
 					$(".alertBox").addClass("alertBoxOn");
 					$(".alertTips p").text("解绑后无法继续享受线上充值、线上快速查询等便捷功能。您确认要继续吗？");
 
@@ -301,21 +199,21 @@ $(function(){
 
 				//挂失
 				$(".loss").bind("tap",function(){
-					operType = 3;
+					operType = 3;//3为挂失
 					$(".alertBox").addClass("alertBoxOn");
 					$(".alertTips p").text("进行挂失操作后，您卡片内的金额将被冻结，保障您的资金安全，您确认要挂失吗？")
 				})
 
 				//重置密码
 				$(".reset").bind("tap",function(){
-					operType = 4;
+					operType = 4;//4为重置密码
 					$(".alertBox").addClass("alertBoxOn");
-					$(".alertTips p").text("重置尾号"+$(".index").find(".cardNum").text().substring(16)+"的捷顺通卡为主卡吗？")
+					$(".alertTips p").text("重置尾号"+cardId.substring(15)+"的捷顺通卡为主卡吗？")
 					console.log(userInfo.openId)
 
 				})
 				//弹框确定按钮
-				var carry = {}//记录传递信息
+				var memoryInfo = {}//记录传递信息
 				$(".alertBtn span").bind("tap",function(){
 					$(".alertBox").removeClass("alertBoxOn");
 					if(operType == 1){//设为主卡
@@ -347,43 +245,39 @@ $(function(){
 							}
 						})				
 
-					}else if(operType == 2){//解绑
-						
-						carry = {
+					}else if(operType == 2){//解绑						
+						memoryInfo = {
 							openId:userInfo.openId,
-							carryMes:"您即将解绑尾号"+userInfo.list[$(".index").index()].usercode.substring(15)+"的捷顺通卡",
-							accounttype:userInfo.list[$(".index").index()].accounttype,
-							tips:"请输入卡密码",
-							type:1
+							cardNo:cardId,
+							accounttype:accounttype,
+							type:"unbind"
 						};
-						
-						sessionStorage.setItem("pwdShow",JSON.stringify(carry));
-						console.log(carry)
+						sessionStorage.setItem("memory",JSON.stringify(memoryInfo));
+						console.log(memoryInfo)
 						console.log("解绑")
+						location.href = "./jsp/password.jsp?openId="+userInfo.openId;
 						operType = 0;
 					}else if(operType == 3){//挂失
-						carry = {
+						memoryInfo = {
 							openId:userInfo.openId,
-							carryMes:"您即将解绑尾号"+userInfo.list[$(".index").index()].usercode.substring(15)+"的捷顺通卡",
-							accounttype:userInfo.list[$(".index").index()].accounttype,
-							tips:"请输入卡密码",
-							type:2
+							cardNo:cardId,
+							accounttype:accounttype,
+							type:"loss"
 						};
-						
-						sessionStorage.setItem("pwdShow",JSON.stringify(carry))
+						sessionStorage.setItem("memory",JSON.stringify(memoryInfo))
 						console.log("挂失");
+						location.href = "./jsp/password.jsp?openId="+userInfo.openId;
 						operType = 0;
 					}else if(operType == 4){//重置密码
-						carry = {
+						memoryInfo = {
 							openId:userInfo.openId,
-							carryMes:"您即将解绑尾号"+userInfo.list[$(".index").index()].usercode.substring(15)+"的捷顺通卡",
-							accounttype:userInfo.list[$(".index").index()].accounttype,
-							tips:"请输入卡密码",
-							type:0
+							cardNo:cardId,
+							accounttype:accounttype,
+							type:"reset"
 						};
-						
-						sessionStorage.setItem("pwdShow",JSON.stringify(carry))
+						sessionStorage.setItem("memory",JSON.stringify(memoryInfo))
 						console.log("重置密码");
+						location.href = "./jsp/password.jsp?openId="+userInfo.openId;
 						operType = 0;
 					}
 					
@@ -405,6 +299,18 @@ $(function(){
 			alert("获取列表失败");
 		}
 	})
+
+	//绑卡
+	$(".bind i").bind("click",function(){
+		var bindInfo = {
+			openId:userInfo.openId,
+		}
+		sessionStorage.setItem("bind",JSON.stringify(bindInfo));
+		console.log(bindInfo);
+		location.href = "./jsp/bindCard.jsp";
+	})
+	
+
 
 
 

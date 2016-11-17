@@ -5,7 +5,7 @@ Zepto(function($){
 	var count = 0;//用于记录小黑点显示
 
 	if(memoryInfo.type == "unbind"){//解绑
-		$(".cardTips").text("您即将解绑尾号"+memoryInfo.cardNo.substring(0,4)+"的捷顺通卡");
+		$(".cardTips").text("您即将解绑尾号"+memoryInfo.cardNo.substring(15)+"的捷顺通卡");
 		$(".pTips").text("请输入卡密码");
 		$(".pwdBtn").addClass("pwdBtnOn");
 		//键盘事件
@@ -50,6 +50,7 @@ Zepto(function($){
 				//确定按钮状态事件
 				if(keyVal.length == 6){
 					$(".btn").addClass("btnOn");
+
 				}else{
 					$(".btn").removeClass("btnOn");
 				}
@@ -59,7 +60,7 @@ Zepto(function($){
 			
 		})
 	}else if(memoryInfo.type == "loss"){//挂失
-		$(".cardTips").text("您即将挂失尾号"+memoryInfo.cardNo.substring(0,4)+"的捷顺通卡");
+		$(".cardTips").text("您即将挂失尾号"+memoryInfo.cardNo.substring(15)+"的捷顺通卡");
 		$(".pTips").text("请输入卡密码");
 		$(".pwdBtn").addClass("pwdBtnOn");
 		//键盘事件
@@ -175,20 +176,59 @@ Zepto(function($){
 				if(keyVal.length == 6){
 					tipsUp ++;
 					if(tipsUp == 1){
-						if(keyVal == "123456"){
-							console.log("成功");
-							oldPassword = keyVal;
-							$(".pTips").text("请输入新的卡密码");
-							for(var i = 0;i<6;i++){
-								$(".box").eq(i).removeClass("keyOn");
+						$.ajax({
+							url:"./checkPwd.execute",
+							type:"POST",
+							data:{
+								openId:memoryInfo.openId,
+								payPwd:keyVal,
+								cardCode:memoryInfo.cardNo
+							},
+							dataType:"json",
+							success:function(data){
+								console.log(data);
+								if(data.resCode == "WX000"){
+										oldPassword = keyVal;
+										$(".pTips").text("请输入新的卡密码");
+										for(var i = 0;i<6;i++){
+											$(".box").eq(i).removeClass("keyOn");
+										}
+										keyVal = "";
+										count = 0;
+
+								}else if(data.resCode == "WX008"){
+									$(".alertBox").addClass("alertBoxOn");
+									$(".alertMes").removeClass("alertMoreMes");
+									$(".alertMes span").text(data.msgContent);
+									tipsUp = 0;
+								}else if(data.resCode == "55"){
+									$(".alertBox").addClass("alertBoxOn");
+									$(".alertMes").removeClass("alertMoreMes");
+									$(".alertMes span").text("卡密码不正确，还可以输入"+data.msgContent.substring(1,2)+"次");
+									tipsUp = 0;
+								}else if(data.resCode == "56"){
+									$(".alertBox").addClass("alertBoxOn");
+									$(".alertMes").addClass("alertMoreMes");
+									$(".alertMes span").text("卡密码不正确，输入错误次数过多已被锁定，"+
+									"可点击忘记密码进行找回，或"+parseInt(data.msgContent)+"秒后重试！");
+									tipsUp = 0;
+								}else if(data.resCode == "38"){
+									$(".alertBox").addClass("alertBoxOn");
+									$(".alertMes").addClass("alertMoreMes");
+									$(".alertMes span").text("卡密码不正确，输入错误次数过多已被锁定，"+
+									"可点击忘记密码进行找回，或"+parseInt(data.msgContent)+"秒后重试！");
+									tipsUp = 0;
+								}else{
+									$(".alertBox").addClass("alertBoxOn");
+									tipsUp = 0;
+								}
+								
+							},
+							error:function(error){
+								alert("系统未开启")
 							}
-							keyVal = "";
-							count = 0;
-						}else{
-							$(".alertBox").addClass("alertBoxOn");
-							tipsUp = 0;
-							console.log("密码错误")
-						}
+						})
+
 					}else if(tipsUp == 2){
 						firstPwd = keyVal;
 						$(".pwdTips").addClass("pwdTipsOn");
@@ -240,7 +280,47 @@ Zepto(function($){
 	//确定按钮点击事件
 	$(".pwdBtn").bind("click",".btnOn",function(){
 		if(memoryInfo.type == "unbind"){
-			$(".alertBox").addClass("alertBoxOn");
+			$.ajax({
+				url:"./unbindJstCard.execute",
+				type:"POST",
+				data:{
+					openId:memoryInfo.openId,
+					cardCode:memoryInfo.cardNo,
+					accounttype:memoryInfo.accounttype,
+					password:keyVal
+				},
+				success:function(data){
+
+					if(JSON.parse(data).resCode == "55"){//密码错误
+						$(".alertBox").addClass("alertBoxOn");
+						$(".alertMes").removeClass("alertMoreMes");
+						$(".alertMes span").text(JSON.parse(data).msgContent);
+
+					}else if(JSON.parse(data).resCode == "56"){//密码错误提示时间
+						$(".alertBox").addClass("alertBoxOn");
+						$(".alertMes").addClass("alertMoreMes");
+						$(".alertMes span").text(JSON.parse(data).msgContent);
+
+					}else if(JSON.parse(data).resCode == "38"){//密码错误提示时间
+						$(".alertBox").addClass("alertBoxOn");
+						$(".alertMes").addClass("alertMoreMes");
+						$(".alertMes span").text(JSON.parse(data).msgContent);
+						
+					}else if(JSON.parse(data).resCode == "WX000"){//解绑成功
+						location.href = "../toCardManagerPage.execute?openId="+memoryInfo.openId;
+					}else if(JSON.parse(data).resCode == "WX002"){//系统异常
+						$(".alertBox").addClass("alertBoxOn");
+						$(".alertMes").removeClass("alertMoreMes");
+						$(".alertMes span").text(JSON.parse(data).msgContent);
+					}
+					console.log(data)
+					
+				},
+				error:function(error){
+
+				}
+			})
+
 			
 			console.log("解绑")
 		}else if(memoryInfo.type == "loss"){
@@ -253,6 +333,7 @@ Zepto(function($){
 
 	//重试按钮
 	$(".pwdError span").bind("click",function(){
+		$(".btn").removeClass("btnOn");
 		$(".alertBox").removeClass("alertBoxOn");
 		for(var j = 0;j<6;j++){
 			$(".box").eq(j).removeClass("keyOn");
@@ -262,7 +343,7 @@ Zepto(function($){
 	})
 	//忘记密码
 	$(".pwdError i").bind("click",function(){
-		location.href = "../new-html/forgetPassword.html"
+		location.href = "./forgetPassword.jsp?openId="+memoryInfo.openId;
 	})
 	
 	

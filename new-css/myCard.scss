@@ -12,6 +12,7 @@
 	-ms-user-select: none;
 	user-select: none;
 	box-sizing:border-box;
+	font-family:"微软雅黑";
 }
 html,body{
 	height: 100%;
@@ -48,10 +49,6 @@ html,body{
 		position:absolute;
 		top:0.34rem;
 		left:0;
-		.index{
-			z-index:3;
-		}
-		
 		.list{
 			width:5.8rem;
 			height:3.28rem;
@@ -67,7 +64,6 @@ html,body{
 				left:0.44rem;
 				color:#ffffff;
 				font-size: 48px;
-				font-weight: bold;
 			}
 			.bill{
 				position:absolute;
@@ -123,8 +119,29 @@ html,body{
 				display: inline-block;
 			}
 		}
-		.oneList{
+		.zcCardOne{
+			height:3.08rem;
 			background-image:url(../images/myCard/ncard01.png);
+			.cardNum{
+				top:1.14rem;
+			}
+			.bill{
+				top:1.82rem;
+			}
+			.stateIcon{
+				top:0;
+			}
+			.asMain{
+				top:1.82rem;
+			}
+		}
+		.gsCardOne{
+			height:3.08rem;
+			background-image:url(../images/myCard/ncard02.png);
+		}
+		.ycCardOne{
+			height:3.08rem;
+			background-image:url(../images/myCard/ncard03.png);
 		}
 		.normalCard1{
 			background-image:url(../images/myCard/mcard06.png);
@@ -210,6 +227,7 @@ html,body{
 		.btn{
 			width:1.4rem;
 			height:0.56rem;
+			line-height: 0.56rem;
 			border-radius:0.24rem;
 			font-size:28px;
 			background:#ffffff;
@@ -217,6 +235,8 @@ html,body{
 			top:50%;
 			right:0;
 			margin-top:-0.28rem;
+			border:0.01rem solid #d3d3d3;
+			color:#878787;
 			outline:none;
 		}
 		.btnOn{
@@ -227,11 +247,10 @@ html,body{
 			background:#ea5920;
 			color:#ffffff;
 		}
-		.ycBtn{
-			border:0.01rem solid #d3d3d3;
-			color:#878787;
+		.zcBtnOne{
+			background:#ea5920;
+			color:#ffffff;
 		}
-
 	}
 }
 /*相关操作*/

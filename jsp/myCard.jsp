@@ -20,49 +20,17 @@
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/myCard.css">
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/fastclick.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/zepto.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/main.js"></script>
 </head>
 <body>
 	<header class="cardBox">
-		<ul class="listBox">
-			<li class="list index normalCard1">
-				<span class="cardNum">8807** *********8904</span>
-				<span class="bill">账单&gt;</span>
-				<i class="stateIcon mainState"></i>
-				<span class="asMain">设为主卡</span>
-			</li>
-			<li class="list normalCard2">
-				<span class="cardNum">8807** *********1234</span>
-				<span class="bill">账单&gt;</span>
-				<i class="stateIcon"></i>
-				<span class="asMain asMainOn">设为主卡</span>
-			</li>
-			<li class="list normalCard3">
-				<span class="cardNum">8807** *********4567</span>
-				<span class="bill">账单&gt;</span>
-				<i class="stateIcon"></i>
-				<span class="asMain asMainOn">设为主卡</span>
-			</li>
-			<li class="list gsCard">
-				<span class="cardNum">8807** *********4567</span>
-				<span class="bill ycBill">账单&gt;</span>
-				<i class="stateIcon lossState"></i>
-				<span class="asMain asMainOn">设为主卡</span>
-			</li>
-			<li class="list ycCard">
-				<span class="cardNum">8807** *********4567</span>
-				<span class="bill ycBill">账单&gt;</span>
-				<i class="stateIcon unusualState"></i>
-				<span class="asMain asMainOn">设为主卡</span>
-			</li>
+		<ul class="listBox clear">
+
 		</ul>
 	</header>
 	<div class="nav">
 		<ul class="navlist">
-			<li class="on"></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
+
 		</ul>
 	</div>
 	<div class="balanceBox">
@@ -75,7 +43,7 @@
 			<span>1234</span>
 		</div>
 		<div class="recharge_btn">
-			<button class="btn btnOn">充值</button>
+			<button class="btn">充值</button>
 		</div>
 	</div>
 
@@ -106,8 +74,6 @@
 			<i></i>
 		</div>
 	</div>
-
-
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/myCard.js"></script>
 </body>
 </html>

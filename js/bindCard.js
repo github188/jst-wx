@@ -3,14 +3,10 @@ $(function(){
 	FastClick.attach(document.body);
 	//用于检验卡号、密码是否为空
 	var checked = {cardNo:false,pwd:false};
-	var cardInfo = JSON.parse(sessionStorage.getItem("addCard"));
+	var cardInfo = JSON.parse(sessionStorage.getItem("bind"));
 	//卡号输入验证
 	var count = 0;//记录空格标志
 	var cardNum = "";//记录卡号
-
-	//有缓存的时候
-
-
 
 	$(".cardId input").bind("keyup",function(){
 		$(".cardTitle").addClass("cardTitleOn");
@@ -176,6 +172,40 @@ $(function(){
 			}
 			$(".iconBox i").text($(this).val());
 		}
+
+		if(checked.cardNo && checked.pwd){
+			$(".btn").addClass("btnOn");
+		}else{
+			$(".btn").removeClass("btnOn");
+		}
+	})
+	//密码输入获取焦点
+	$(".cardPwd input").focus(function(){
+		if($(this).val().length == 6){
+			checked.pwd = true;
+		}else{
+			checked.pwd = false;
+		}
+
+		if(checked.cardNo && checked.pwd){
+			$(".btn").addClass("btnOn");
+		}else{
+			$(".btn").removeClass("btnOn");
+		}
+	})
+	//密码输入失去焦点
+	$(".cardPwd input").blur(function(){
+		if($(this).val().length == 6){
+			checked.pwd = true;
+		}else{
+			checked.pwd = false;
+		}
+
+		if(checked.cardNo && checked.pwd){
+			$(".btn").addClass("btnOn");
+		}else{
+			$(".btn").removeClass("btnOn");
+		}
 	})
 
 	//弹出密码提示框
@@ -201,11 +231,18 @@ $(function(){
 					openId:cardInfo.openId,
 					cardCode:cardNum,
 					password:$(".cardPwd input").val(),
-					accounttype:"2"
+					accounttype:cardInfo.accounttype
 				},
 				success:function(data){
 					var info = JSON.parse(data);
 					if(info.resCode == "WX000"){
+						var memoryInfo = {
+							openId:cardInfo.openId,
+							cardNo:cardNum,
+							accounttype:cardInfo.accounttype,
+							type:"reset"
+						};
+						sessionStorage.setItem("memory",JSON.stringify(memoryInfo))
 						location.href = "./bindSuccess.jsp?"+cardInfo.openId;
 					}else if(info.resCode == "WX007"){
 						$(".alertBox").addClass("alertBoxOn");

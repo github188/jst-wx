@@ -42,14 +42,14 @@
 			//解决点透问题
 			FastClick.attach(document.body);
 			$(".btn button").on("click",function(){
-				var memoryInfo = {
+				memoryInfo = {
 					openId:userInfo.openId,
-					cardNo:userInfo.cardNo,
+					cardNo:cardId,
 					accounttype:userInfo.accounttype,
 					type:"reset"
 				};
 				sessionStorage.setItem("memory",JSON.stringify(memoryInfo))
-				location.href = "./password.jsp?openId="+userInfo.openId;
+				location.href = "./jsp/password.jsp?openId="+userInfo.openId;
 			})
 
 		})

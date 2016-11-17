@@ -93,7 +93,7 @@
 		<i></i><span>不知道卡密码？</span>
 	</div>
 	<div class="alertBox">
-		<div class="alertMes alertMoreMes">
+		<div class="alertMes">
 			<span>卡密码不正确，输入错误次数过多已被锁定，
 可点击忘记密码进行找回，或10分钟后重试！</span>
 		</div>
@@ -120,7 +120,7 @@
 			<span>2.如已修改并忘记卡密码，<i>请点此找回密码。</i></span>
 		</div>
 	</div>
-	<script type="text/javascript" src="<%=request.getContextPath() %>/js/passwordhtml.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/password.js"></script>
 
 </body>
 </html>
