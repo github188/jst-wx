@@ -16,7 +16,7 @@
     </script>
 	<meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
 	<title>忘记卡密码</title>
-	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/zepto.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/forgetMes.css">
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/main.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/forgetMes.js"></script>
@@ -42,9 +42,11 @@
 				<p class="inpTips"></p>
 			</div>
 		</div>
+		<div class="password">
+			<span>证件号</span><input type="tel" placeholder="请输入卡密码">
+		</div>
 		<div class="warmthTips">
-			<span></span>
-			<p></p>
+			<i></i><span>不知道卡密码？</span>
 		</div>
 	</section>
 	<div class="btnBox">

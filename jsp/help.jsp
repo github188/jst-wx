@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +16,7 @@
     </script>
 	<meta name="viewport" content="width=device-width, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
 	<title>帮助中心</title>
-	<link rel="stylesheet" type="text/css" href="../new-css/help.css">
-	<script type="text/javascript" src="../js/fastclick.js"></script>
-	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/help.css">
 </head>
 <body>
 	<section>
@@ -49,36 +49,5 @@
 			</li>
 		</ul>
 	</section>
-
-	<!-- <script type="text/javascript">
-		//解决点透问题
-		FastClick.attach(document.body);
-		//获取数据
-		$.ajax({
-			url:"/app/rest/getMemberInfo",
-			type:"GET",
-			dataType:"json",
-			success:function(data){
-				var helpHtml = "";
-				for(var i = 0;i<data.shopList.length;i++){
-					helpHtml += '<li class="helpList">'+
-									'<div class="question">'+
-										'<i>'+(i+1)+'.</i><span>'+data.shopList[i].shopName+'</span>'+
-									'</div>'+
-									'<div class="answerBox">'+
-										'<i></i>'+
-										'<div class="answer">'+
-											'<p>'+data.shopList[i].shopAddr+'</p>'+
-										'</div>'+
-									'</div>'+
-								'</li>'
-				}
-				$(".helpBox").html(helpHtml);
-			},
-			error:function(error){
-
-			}
-		})
-	</script> -->
 </body>
 </html>

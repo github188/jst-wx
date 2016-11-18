@@ -16,9 +16,9 @@
     </script>
 	<meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
 	<title>重置密码</title>
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/resetPassword.css">
-	<script type="text/javascript" src="<%=request.getContextPath() %>/js/zepto.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath() %>/js/resetPassword.js"></script>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/2016css_v1.0/resetPassword.css">
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/2016js_v1.0/zepto.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/2016js_v1.0/resetPassword.js"></script>
 </head>
 <body>
 	<header class="titleBox">
